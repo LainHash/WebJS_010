@@ -1,17 +1,22 @@
 export default class Category {
-  constructor({ Id, Code, Name, Description } = {}) {
-    this.Id = Id;
-    this.Code = Code;
-    this.Name = Name;
-    this.Description = Description;
+  Id;
+  Code;
+  Name;
+  Description;
+
+  constructor({ id, code, name, description } = {}) {
+    this.Id = id;
+    this.Code = code;
+    this.Name = name;
+    this.Description = description;
   }
   static fromDb(row) {
     if (!row) return null;
     return new Category({
-      Id: row.CategoryId,
-      Code: row.CategoryCode,
-      Name: row.CategoryName,
-      Description: row.Description,
+      id: row.CategoryId,
+      code: row.CategoryCode,
+      name: row.CategoryName,
+      description: row.Description,
     });
   }
 

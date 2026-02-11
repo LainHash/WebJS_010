@@ -1,13 +1,15 @@
-export default class Cpu {
+export default class Gpu {
   Id;
   Code;
   Name;
-  Cores;
-  Logicals;
-  Tdp;
-  Socket;
-  Speed;
-  Turbo;
+  MemorySize;
+  MemoryType;
+  Clock;
+  UnifiedShader;
+  Tmu;
+  Rop;
+  Bus;
+  Chip;
   CategoryId;
   SupplierId;
   UnitPrice;
@@ -18,12 +20,14 @@ export default class Cpu {
     id,
     code,
     name,
-    cores,
-    logicals,
-    tdp,
-    socket,
-    speed,
-    turbo,
+    memorySize,
+    memoryType,
+    clock,
+    unifiedShader,
+    tmu,
+    rop,
+    bus,
+    chip,
     categoryId,
     supplierId,
     unitPrice,
@@ -33,12 +37,14 @@ export default class Cpu {
     this.Id = id;
     this.Code = code;
     this.Name = name;
-    this.Cores = cores;
-    this.Logicals = logicals;
-    this.Tdp = tdp;
-    this.Socket = socket;
-    this.Speed = speed;
-    this.Turbo = turbo;
+    this.MemorySize = memorySize;
+    this.MemoryType = memoryType;
+    this.Clock = clock;
+    this.UnifiedShader = unifiedShader;
+    this.Tmu = tmu;
+    this.Rop = rop;
+    this.Bus = bus;
+    this.Chip = chip;
     this.CategoryId = categoryId;
     this.SupplierId = supplierId;
     this.UnitPrice = unitPrice;
@@ -47,16 +53,18 @@ export default class Cpu {
   }
   static fromDb(row) {
     if (!row) return null;
-    return new Cpu({
-      id: row.CpuId,
-      code: row.CpuCode,
-      name: row.CpuName,
-      cores: row.Cores,
-      logicals: row.Logicals,
-      tdp: row.Tdp,
-      socket: row.Socket,
-      speed: row.Speed,
-      turbo: row.Turbo,
+    return new Gpu({
+      id: row.GpuId,
+      code: row.GpuCode,
+      name: row.GpuName,
+      memorySize: row.MemorySize,
+      memoryType: row.MemoryType,
+      clock: row.Clock,
+      unifiedShader: row.UnifiedShader,
+      tmu: row.Tmu,
+      rop: row.Rop,
+      bus: row.Bus,
+      chip: row.Chip,
       categoryId: row.CategoryId,
       supplierId: row.SupplierId,
       unitPrice: row.UnitPrice,
@@ -68,12 +76,14 @@ export default class Cpu {
   toInsertParams() {
     return [
       this.Name,
-      this.Cores,
-      this.Logicals,
-      this.Tdp,
-      this.Socket,
-      this.Speed,
-      this.Turbo,
+      this.MemorySize,
+      this.MemoryType,
+      this.Clock,
+      this.UnifiedShader,
+      this.Tmu,
+      this.Rop,
+      this.Bus,
+      this.Chip,
       this.CategoryId,
       this.SupplierId,
       this.UnitPrice,
@@ -85,12 +95,14 @@ export default class Cpu {
   toUpdateParams() {
     return [
       this.Name,
-      this.Cores,
-      this.Logicals,
-      this.Tdp,
-      this.Socket,
-      this.Speed,
-      this.Turbo,
+      this.MemorySize,
+      this.MemoryType,
+      this.Clock,
+      this.UnifiedShader,
+      this.Tmu,
+      this.Rop,
+      this.Bus,
+      this.Chip,
       this.CategoryId,
       this.SupplierId,
       this.UnitPrice,
