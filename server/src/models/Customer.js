@@ -1,36 +1,95 @@
 export default class Customer {
   Id;
   Code;
+  AccountId;
   Lastname;
-  Firstnam;
+  Firstname;
   Gender;
   Birthday;
   City;
   Country;
   Address;
-  Email;
+  Phone;
+  CreatedAt = null;
+  UpdatedAt = null;
 
   constructor({
     id,
     code,
+    accountId,
     lastname,
-    firstnam,
+    firstname,
     gender,
     birthday,
     city,
     country,
     address,
-    email,
+    phone,
+    createdAt,
+    updatedAt,
   } = {}) {
     this.Id = id;
     this.Code = code;
+    this.AccountId = accountId;
     this.Lastname = lastname;
-    this.Firstnam = firstnam;
+    this.Firstname = firstname;
     this.Gender = gender;
     this.Birthday = birthday;
     this.City = city;
     this.Country = country;
     this.Address = address;
-    this.Email = email;
+    this.Phone = phone;
+    this.CreatedAt = createdAt;
+    this.UpdatedAt = updatedAt;
+  }
+  static fromDb(row) {
+    if (!row) return null;
+    return new Customer({
+      id: row.CustomerId,
+      code: row.CustomerCode,
+      accountId: row.AccountId,
+      lastname: row.Lastname,
+      firstname: row.Firstname,
+      gender: row.Gender,
+      Birthday: row.Birthday,
+      City: row.City,
+      country: row.Country,
+      address: row.Address,
+      phone: row.Phone,
+      createdAt: row.CreatedAt,
+      updatedAt: row.UpdatedAt,
+    });
+  }
+
+  toInsertParams() {
+    return [
+      this.AccountId,
+      this.Lastname,
+      this.Firstname,
+      this.Gender,
+      this.Birthday,
+      this.City,
+      this.Country,
+      this.Address,
+      this.Phone,
+      this.CreatedAt,
+      this.UpdatedAt,
+    ];
+  }
+
+  toUpdateParams() {
+    return [
+      this.AccountId,
+      this.Lastname,
+      this.Firstname,
+      this.Gender,
+      this.Birthday,
+      this.City,
+      this.Country,
+      this.Address,
+      this.Phone,
+      this.CreatedAt,
+      this.UpdatedAt,
+    ];
   }
 }

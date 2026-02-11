@@ -1,4 +1,4 @@
-export default class Category {
+export default class Role {
   Id;
   Code;
   Name;
@@ -23,25 +23,19 @@ export default class Category {
   }
   static fromDb(row) {
     if (!row) return null;
-    return new Category({
-      id: row.CategoryId,
-      code: row.CategoryCode,
-      name: row.CategoryName,
+    return new Role({
+      id: row.RoleId,
+      code: row.RoleCode,
+      name: row.RoleName,
       description: row.Description,
       createdAt: row.CreatedAt,
       updatedAt: row.UpdatedAt,
     });
   }
-
-  toInsertParams() {
+  toInserParams() {
     return [this.Name, this.Description, this.CreatedAt, this.UpdatedAt];
   }
-
   toUpdateParams() {
     return [this.Name, this.Description, this.CreatedAt, this.UpdatedAt];
-  }
-
-  validate() {
-    return [];
   }
 }

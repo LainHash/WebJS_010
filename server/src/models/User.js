@@ -2,18 +2,20 @@ export default class User {
   Id;
   Code;
   Username;
+  Email;
   PasswordHash;
-  Role;
-  IsActive;
-  CreatedAt;
-  UpdatedAt;
+  RoleId;
+  IsActive = true;
+  CreatedAt = null;
+  UpdatedAt = null;
 
   constructor({
     id,
     code,
     username,
+    email,
     passwordHash,
-    role = "customer",
+    roleId = 0,
     isActive = true,
     createdAt = null,
     updatedAt = null,
@@ -21,8 +23,9 @@ export default class User {
     this.Id = id;
     this.Code = code;
     this.Username = username;
+    this.Email = email;
     this.PasswordHash = passwordHash;
-    this.Role = role;
+    this.RoleId = roleId;
     this.IsActive = isActive;
     this.CreatedAt = createdAt;
     this.UpdatedAt = updatedAt;
@@ -34,8 +37,9 @@ export default class User {
       id: row.AccountId,
       code: row.AccountCode,
       username: row.Username,
+      email: row.Email,
       passwordHash: row.PasswordHash,
-      role: row.Role,
+      roleId: row.RoleId,
       isActive: row.IsActive,
       createdAt: row.CreatedAt,
       updatedAt: row.UpdatedAt,
@@ -45,8 +49,9 @@ export default class User {
   toInsertParams() {
     return [
       this.Username,
+      this.Email,
       this.PasswordHash,
-      this.Role,
+      this.RoleId,
       this.IsActive,
       this.CreatedAt,
       this.UpdatedAt,
@@ -56,8 +61,9 @@ export default class User {
   toUpdateParams() {
     return [
       this.Username,
+      this.Email,
       this.PasswordHash,
-      this.Role,
+      this.RoleId,
       this.IsActive,
       this.CreatedAt,
       this.UpdatedAt,

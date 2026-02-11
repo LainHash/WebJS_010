@@ -6,6 +6,8 @@ export default class Supplier {
   Country;
   Phone;
   Fax;
+  CreatedAt = null;
+  UpdatedAt = null;
 
   constructor({
     id,
@@ -15,6 +17,8 @@ export default class Supplier {
     country,
     phone,
     fax,
+    createdAt = null,
+    updatedAt = null,
   } = {}) {
     this.Id = id;
     this.Code = code;
@@ -23,6 +27,8 @@ export default class Supplier {
     this.Country = country;
     this.Phone = phone;
     this.Fax = fax;
+    this.CreatedAt = createdAt;
+    this.UpdatedAt = updatedAt;
   }
   static fromDb(row) {
     if (!row) return null;
@@ -34,6 +40,8 @@ export default class Supplier {
       country: row.Country,
       phone: row.Phone,
       fax: row.Fax,
+      createdAt: row.CreatedAt,
+      updatedAt: row.UpdatedAt,
     });
   }
 
@@ -44,6 +52,8 @@ export default class Supplier {
       this.Country,
       this.Phone,
       this.Fax,
+      this.CreatedAt,
+      this.UpdatedAt,
     ];
   }
 
@@ -54,6 +64,8 @@ export default class Supplier {
       this.Country,
       this.Phone,
       this.Fax,
+      this.CreatedAt,
+      this.UpdatedAt,
     ];
   }
 

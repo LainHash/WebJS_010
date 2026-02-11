@@ -13,6 +13,8 @@ export default class Cpu {
   UnitPrice;
   UnitsInStock;
   Discontinued;
+  CreatedAt = null;
+  UpdatedAt = null;
 
   constructor({
     id,
@@ -29,6 +31,8 @@ export default class Cpu {
     unitPrice,
     unitsInStock,
     discontinued,
+    createdAt = null,
+    updatedAt = null,
   } = {}) {
     this.Id = id;
     this.Code = code;
@@ -44,6 +48,8 @@ export default class Cpu {
     this.UnitPrice = unitPrice;
     this.UnitsInStock = unitsInStock;
     this.Discontinued = discontinued;
+    this.CreatedAt = createdAt;
+    this.UpdatedAt = updatedAt;
   }
   static fromDb(row) {
     if (!row) return null;
@@ -62,6 +68,8 @@ export default class Cpu {
       unitPrice: row.UnitPrice,
       unitsInStock: row.UnitsInStock,
       discontinued: row.Discontinued,
+      createdAt: row.CreatedAt,
+      updatedAt: row.UpdatedAt,
     });
   }
 
@@ -79,6 +87,8 @@ export default class Cpu {
       this.UnitPrice,
       this.UnitsInStock,
       this.Discontinued,
+      this.CreatedAt,
+      this.UpdatedAt,
     ];
   }
 
@@ -96,6 +106,8 @@ export default class Cpu {
       this.UnitPrice,
       this.UnitsInStock,
       this.Discontinued,
+      this.CreatedAt,
+      this.UpdatedAt,
     ];
   }
 
