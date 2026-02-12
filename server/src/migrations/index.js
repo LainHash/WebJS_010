@@ -26,6 +26,7 @@ export const runMigrations = async () => {
     import("./20250211000006_create_gpu.js"),
     import("./20250211000007_create_customer.js"),
     import("./20250211000008_create_employee.js"),
+    import("./20250211000009_create_laptop.js"),
   ];
 
   try {

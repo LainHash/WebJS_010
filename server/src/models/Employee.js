@@ -81,7 +81,7 @@ export default class Employee {
       updatedAt: row.UpdatedAt,
     });
   }
-  toInserParams() {
+  toInsertParams() {
     return [
       this.Id,
       this.Code,

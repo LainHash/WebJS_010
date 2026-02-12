@@ -5,6 +5,9 @@ import supplierRoute from "./routes/supplierRoute.js";
 import categoryRoute from "./routes/categoryRoute.js";
 import cpuRoute from "./routes/cpuRoute.js";
 import gpuRoute from "./routes/gpuRoute.js";
+import laptopRoute from "./routes/laptopRoute.js";
+import customerRoute from "./routes/customerRoute.js";
+import employeeRoute from "./routes/employeeRoute.js";
 
 const app = express();
 
@@ -16,6 +19,9 @@ app.use("/api/suppliers", supplierRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/cpus", cpuRoute);
 app.use("/api/gpus", gpuRoute);
+app.use("/api/laptops", laptopRoute);
+app.use("/api/customers", customerRoute);
+app.use("/api/employees", employeeRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello, World");
