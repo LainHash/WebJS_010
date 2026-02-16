@@ -44,9 +44,10 @@ export const up = async (queryInterface) => {
       type: DataTypes.STRING(50),
       allowNull: true,
     },
-    Chip: {
-      type: DataTypes.STRING(100),
+    Igpu: {
+      type: DataTypes.BOOLEAN,
       allowNull: true,
+      defaultValue: false,
     },
     CategoryId: {
       type: DataTypes.INTEGER,

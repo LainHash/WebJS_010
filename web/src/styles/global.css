@@ -1,0 +1,69 @@
+:root {
+  font-family:
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  /* Brand Colors */
+  --primary: #ff1f1f;
+  --primary-dark: #a01515;
+  /* Text Colors */
+  --text-primary: #101828;
+  --text-muted: #667085;
+  --text-muted-light: #94a3b8;
+  --text-light: #cbd5f5;
+  /* Background Colors */
+  --bg-primary: #f6f7fb;
+  --bg-secondary: #f6f7fb;
+  --bg-light: #eff4ff;
+  --bg-lighter: #f8fafc;
+  --bg-light-blue: #eef2ff;
+  --bg-lighter-blue: #dbe9ff;
+  --bg-dark: #0f172a;
+  --bg-dark-secondary: #182642;
+  --bg-input: #ffffff;
+  /* UI Colors */
+  --border: #e4e7ec;
+  --card-bg: #ffffff;
+  --shadow-sm: 0px 15px 40px rgba(15, 23, 42, 0.08);
+  /* Status Colors */
+  --success: #6ee7b7;
+  --success-dark: #15803d;
+  --success-light: #dcfce7;
+  --error: #fee4e2;
+  --error-dark: #b42318;
+  /* Badge Colors */
+  --badge-blue: #e0edff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    var(--bg-light),
+    var(--bg-secondary) 45%
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#app {
+  min-height: 100vh;
+}

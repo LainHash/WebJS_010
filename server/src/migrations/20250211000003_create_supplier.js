@@ -28,10 +28,6 @@ export const up = async (queryInterface) => {
       type: DataTypes.STRING(20),
       allowNull: true,
     },
-    Fax: {
-      type: DataTypes.STRING(20),
-      allowNull: true,
-    },
     CreatedAt: {
       type: DataTypes.DATE,
       allowNull: false,

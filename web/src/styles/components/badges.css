@@ -1,0 +1,33 @@
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge-list span {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--bg-light-blue);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+}
+
+.checklist li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.checklist li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--success);
+}

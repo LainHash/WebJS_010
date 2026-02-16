@@ -1,0 +1,28 @@
+.detail-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.detail-card__price {
+  font-size: 2.5rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.spec-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}

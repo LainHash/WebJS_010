@@ -5,7 +5,6 @@ export default class Supplier {
   ContactName;
   Country;
   Phone;
-  Fax;
   CreatedAt = null;
   UpdatedAt = null;
 
@@ -16,7 +15,6 @@ export default class Supplier {
     contactName,
     country,
     phone,
-    fax,
     createdAt = null,
     updatedAt = null,
   } = {}) {
@@ -26,7 +24,6 @@ export default class Supplier {
     this.ContactName = contactName;
     this.Country = country;
     this.Phone = phone;
-    this.Fax = fax;
     this.CreatedAt = createdAt;
     this.UpdatedAt = updatedAt;
   }
@@ -39,7 +36,6 @@ export default class Supplier {
       contactName: row.ContactName,
       country: row.Country,
       phone: row.Phone,
-      fax: row.Fax,
       createdAt: row.CreatedAt,
       updatedAt: row.UpdatedAt,
     });
@@ -51,7 +47,6 @@ export default class Supplier {
       this.ContactName,
       this.Country,
       this.Phone,
-      this.Fax,
       this.CreatedAt,
       this.UpdatedAt,
     ];
@@ -63,7 +58,6 @@ export default class Supplier {
       this.ContactName,
       this.Country,
       this.Phone,
-      this.Fax,
       this.CreatedAt,
       this.UpdatedAt,
     ];

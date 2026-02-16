@@ -1,0 +1,146 @@
+/* Account Detail Page */
+.account-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.account-detail__header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.account-detail__header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+  color: var(--text-primary);
+}
+
+.account-detail__header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.account-detail__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Detail Info */
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.detail-info__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-info__label {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.detail-info__value {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.detail-info__input {
+  border-radius: 0.9rem;
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.detail-info__input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-color: var(--primary);
+}
+
+/* Actions */
+.account-detail__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.account-detail__actions .btn {
+  min-width: 150px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .account-detail__container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .account-detail__header h1 {
+    font-size: 1.5rem;
+  }
+
+  .account-detail__actions {
+    flex-direction: column;
+  }
+
+  .account-detail__actions .btn {
+    width: 100%;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .account-detail {
+    padding: 0 0.5rem;
+  }
+
+  .detail-info {
+    gap: 1rem;
+  }
+
+  .account-detail__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .account-detail__header h1 {
+    font-size: 1.25rem;
+  }
+
+  .account-detail__header p {
+    font-size: 0.95rem;
+  }
+
+  .auth-card {
+    padding: 1rem;
+  }
+
+  .auth-card__header {
+    margin-bottom: 1rem;
+  }
+
+  .detail-info__input {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}

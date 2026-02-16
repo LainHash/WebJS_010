@@ -1,0 +1,81 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem clamp(1.5rem, 4vw, 4.5rem) 3rem;
+  gap: 2rem;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.page--narrow {
+  gap: 1.5rem;
+}
+
+.page--detail {
+  gap: 1.25rem;
+}
+
+.section {
+  background: var(--card-bg);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.section--accent {
+  background: linear-gradient(120deg, var(--bg-dark), var(--bg-dark-secondary));
+  color: var(--card-bg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.section__header {
+  text-align: left;
+}
+
+.section__header h1,
+.section__header h2 {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.section__subtitle {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.section__content {
+  padding: 0.5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: var(--primary);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 1rem;
+  }
+
+  .section,
+  .laptop-grid,
+  .testimonials,
+  .detail-card,
+  .contact-form,
+  .contact__info {
+    padding: 1.25rem;
+  }
+}

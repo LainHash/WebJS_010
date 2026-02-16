@@ -88,6 +88,10 @@ export const up = async (queryInterface) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    Discontinued: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: 0,
+    },
     CreatedAt: {
       type: DataTypes.DATE,
       allowNull: false,

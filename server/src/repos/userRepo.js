@@ -1,6 +1,6 @@
 import { initializeDatabase } from "../config/db.js";
 
-const userTable = "Account";
+const userTable = "Accounts";
 
 export const findAll = async () => {
   try {

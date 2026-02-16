@@ -14,6 +14,7 @@ export default class Laptop {
   SupplierId;
   UnitPrice;
   UnitsInStock;
+  Discontinued;
   CreatedAt = null;
   UpdatedAt = null;
   constructor({
@@ -32,6 +33,7 @@ export default class Laptop {
     supplierId,
     unitPrice,
     unitsInStock,
+    discontinued,
     createdAt,
     updatedAt,
   } = {}) {
@@ -50,6 +52,7 @@ export default class Laptop {
     this.SupplierId = supplierId;
     this.UnitPrice = unitPrice;
     this.UnitsInStock = unitsInStock;
+    this.Discontinued = discontinued;
     this.CreatedAt = createdAt;
     this.UpdatedAt = updatedAt;
   }
@@ -71,6 +74,7 @@ export default class Laptop {
       supplierId: row.SupplierId,
       unitPrice: row.UnitPrice,
       unitsInStock: row.UnitsInStock,
+      discontinued: row.Discontinued,
       createdAt: row.CreatedAt,
       updatedAt: row.UpdatedAt,
     });
@@ -92,6 +96,7 @@ export default class Laptop {
       this.SupplierId,
       this.UnitPrice,
       this.UnitsInStock,
+      this.Discontinued,
       this.CreatedAt,
       this.UpdatedAt,
     ];
@@ -113,6 +118,7 @@ export default class Laptop {
       this.SupplierId,
       this.UnitPrice,
       this.UnitsInStock,
+      this.Discontinued,
       this.CreatedAt,
       this.UpdatedAt,
     ];

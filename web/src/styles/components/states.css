@@ -1,0 +1,21 @@
+.state {
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.state--loading {
+  background: var(--bg-light);
+  color: var(--primary);
+}
+
+.state--error {
+  background: var(--error);
+  color: var(--error-dark);
+}
+
+.state--success {
+  background: var(--success-light);
+  color: var(--success-dark);
+}

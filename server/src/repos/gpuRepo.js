@@ -1,6 +1,6 @@
 import { initializeDatabase } from "../config/db.js";
 
-const gpuTable = "GPU";
+const gpuTable = "GPUs";
 
 export const findAll = async () => {
   try {

@@ -1,0 +1,40 @@
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.contact-form,
+.contact__info {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--bg-dark);
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.contact__info ul {
+  padding-left: 1.2rem;
+}
+
+.contact__hotline a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}

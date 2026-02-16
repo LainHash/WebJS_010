@@ -1,6 +1,6 @@
 import { initializeDatabase } from "../config/db.js";
 
-const cpuTable = "CPU";
+const cpuTable = "CPUs";
 
 export const findAll = async () => {
   try {

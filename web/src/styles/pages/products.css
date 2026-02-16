@@ -1,0 +1,89 @@
+.laptop-grid {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  min-height: 1050px;
+}
+
+.laptop-grid__toolbar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.laptop-grid__toolbar input,
+.laptop-grid__toolbar select {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+.laptop-grid__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 6rem;
+  justify-items: center;
+  padding: 0 3rem;
+}
+
+.laptop-card {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 1.25rem;
+  background: var(--bg-lighter);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 19rem;
+}
+
+.laptop-card__badge {
+  align-self: flex-start;
+  background: var(--badge-blue);
+  border-radius: 999px;
+  padding: 0.15rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.laptop-card__name {
+  color: var(--primary-dark);
+}
+
+.laptop-card ul {
+  padding-left: 1rem;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.laptop-card__price {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.price_link {
+}
+
+.price_link:hover {
+  color: var(--primary);
+}
+
+.laptop-grid__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.laptop-grid__more .btn {
+  min-width: 10rem;
+}

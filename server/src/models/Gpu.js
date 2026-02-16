@@ -9,7 +9,7 @@ export default class Gpu {
   Tmu;
   Rop;
   Bus;
-  Chip;
+  Igpu;
   CategoryId;
   SupplierId;
   UnitPrice;
@@ -29,7 +29,7 @@ export default class Gpu {
     tmu,
     rop,
     bus,
-    chip,
+    igpu,
     categoryId,
     supplierId,
     unitPrice,
@@ -48,7 +48,7 @@ export default class Gpu {
     this.Tmu = tmu;
     this.Rop = rop;
     this.Bus = bus;
-    this.Chip = chip;
+    this.Igpu = igpu;
     this.CategoryId = categoryId;
     this.SupplierId = supplierId;
     this.UnitPrice = unitPrice;
@@ -70,7 +70,7 @@ export default class Gpu {
       tmu: row.Tmu,
       rop: row.Rop,
       bus: row.Bus,
-      chip: row.Chip,
+      igpu: row.Igpu,
       categoryId: row.CategoryId,
       supplierId: row.SupplierId,
       unitPrice: row.UnitPrice,
@@ -91,7 +91,7 @@ export default class Gpu {
       this.Tmu,
       this.Rop,
       this.Bus,
-      this.Chip,
+      this.Igpu,
       this.CategoryId,
       this.SupplierId,
       this.UnitPrice,
@@ -112,7 +112,7 @@ export default class Gpu {
       this.Tmu,
       this.Rop,
       this.Bus,
-      this.Chip,
+      this.Igpu,
       this.CategoryId,
       this.SupplierId,
       this.UnitPrice,
