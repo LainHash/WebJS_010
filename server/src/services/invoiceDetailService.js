@@ -20,7 +20,6 @@ export const createInvoiceDetail = async (data) => {
   const detail = new InvoiceDetail(data);
   const insertId = await detailRepo.create([
     data.invoiceId || detail.InvoiceId,
-    data.productType || detail.ProductType,
     data.productId || detail.ProductId,
     data.productName || detail.ProductName,
     data.unitPrice || detail.UnitPrice,
@@ -40,7 +39,6 @@ export const updateInvoiceDetail = async (id, data) => {
   const updated = new InvoiceDetail({ ...existing, ...data, Id: id });
   const affected = await detailRepo.updateById(id, [
     data.invoiceId ?? existing.InvoiceId,
-    data.productType ?? existing.ProductType,
     data.productId ?? existing.ProductId,
     data.productName ?? existing.ProductName,
     data.unitPrice ?? existing.UnitPrice,

@@ -34,8 +34,8 @@ export const findByInvoiceId = async (invoiceId) => {
 export const create = async (detailParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${invoiceDetails} (InvoiceId, ProductType, ProductId, ProductName, UnitPrice, Quantity, DiscountPercent, LineTotal, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${invoiceDetails} (InvoiceId, ProductId, ProductName, UnitPrice, Quantity, DiscountPercent, LineTotal, CreatedAt, UpdatedAt)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     detailParams,
   );
   return result.insertId;
@@ -45,7 +45,7 @@ export const updateById = async (id, detailParams) => {
   const pool = await initializeDatabase();
   const params = [...detailParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${invoiceDetails} SET InvoiceId = ?, ProductType = ?, ProductId = ?, ProductName = ?, UnitPrice = ?, Quantity = ?, DiscountPercent = ?, LineTotal = ?, CreatedAt = ?, UpdatedAt = ? WHERE InvoiceDetailId = ?`,
+    `UPDATE ${invoiceDetails} SET InvoiceId = ?, ProductId = ?, ProductName = ?, UnitPrice = ?, Quantity = ?, DiscountPercent = ?, LineTotal = ?, CreatedAt = ?, UpdatedAt = ? WHERE InvoiceDetailId = ?`,
     params,
   );
   return result.affectedRows;

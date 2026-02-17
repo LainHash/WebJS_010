@@ -10,6 +10,7 @@ export default class Customer {
   Country;
   Address;
   Phone;
+  CIC;
   CreatedAt = null;
   UpdatedAt = null;
 
@@ -25,6 +26,7 @@ export default class Customer {
     country,
     address,
     phone,
+    cic,
     createdAt,
     updatedAt,
   } = {}) {
@@ -39,6 +41,7 @@ export default class Customer {
     this.Country = country;
     this.Address = address;
     this.Phone = phone;
+    this.CIC = cic;
     this.CreatedAt = createdAt;
     this.UpdatedAt = updatedAt;
   }
@@ -56,6 +59,7 @@ export default class Customer {
       country: row.Country,
       address: row.Address,
       phone: row.Phone,
+      cic: row.CIC,
       createdAt: row.CreatedAt,
       updatedAt: row.UpdatedAt,
     });
@@ -72,6 +76,7 @@ export default class Customer {
       this.Country,
       this.Address,
       this.Phone,
+      this.CIC,
       this.CreatedAt,
       this.UpdatedAt,
       this.Id,
@@ -89,6 +94,7 @@ export default class Customer {
       this.Country,
       this.Address,
       this.Phone,
+      this.CIC,
       this.CreatedAt,
       this.UpdatedAt,
       this.Id,

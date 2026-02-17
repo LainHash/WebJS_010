@@ -5,16 +5,12 @@ export const up = async (queryInterface) => {
     CpuId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
-    },
-    CpuCode: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-      unique: true,
-    },
-    CpuName: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
+      references: {
+        model: "Products",
+        key: "ProductId",
+      },
+      onDelete: "RESTRICT",
+      onUpdate: "CASCADE",
     },
     Cores: {
       type: DataTypes.INTEGER,
@@ -39,38 +35,6 @@ export const up = async (queryInterface) => {
     Turbo: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: true,
-    },
-    CategoryId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Categories",
-        key: "CategoryId",
-      },
-      onDelete: "RESTRICT",
-      onUpdate: "CASCADE",
-    },
-    SupplierId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Suppliers",
-        key: "SupplierId",
-      },
-      onDelete: "RESTRICT",
-      onUpdate: "CASCADE",
-    },
-    UnitPrice: {
-      type: DataTypes.DECIMAL(12, 2),
-      allowNull: true,
-    },
-    UnitsInStock: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    Discontinued: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
     },
     CreatedAt: {
       type: DataTypes.DATE,

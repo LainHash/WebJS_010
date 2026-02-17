@@ -2,7 +2,6 @@ export default class InvoiceDetail {
   Id;
   InvoiceId;
   ProductId;
-  CategoryId;
   ProductName;
 
   UnitPrice;
@@ -17,7 +16,6 @@ export default class InvoiceDetail {
     id,
     invoiceId,
     productId,
-    categoryId,
     productName,
     unitPrice,
     quantity,
@@ -29,7 +27,6 @@ export default class InvoiceDetail {
     this.Id = id;
     this.InvoiceId = invoiceId;
     this.ProductId = productId;
-    this.CategoryId = categoryId;
     this.ProductName = productName;
     this.UnitPrice = unitPrice;
     this.Quantity = quantity;
@@ -45,7 +42,6 @@ export default class InvoiceDetail {
       id: row.InvoiceDetailId,
       invoiceId: row.InvoiceId,
       productId: row.ProductId,
-      categoryId: row.CategoryId,
       productName: row.ProductName,
       unitPrice: row.UnitPrice,
       quantity: row.Quantity,
@@ -60,7 +56,6 @@ export default class InvoiceDetail {
     return [
       this.InvoiceId,
       this.ProductId,
-      this.CategoryId,
       this.ProductName,
       this.UnitPrice,
       this.Quantity,
@@ -76,7 +71,6 @@ export default class InvoiceDetail {
     return [
       this.InvoiceId,
       this.ProductId,
-      this.CategoryId,
       this.ProductName,
       this.UnitPrice,
       this.Quantity,

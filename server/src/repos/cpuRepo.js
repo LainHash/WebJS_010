@@ -25,8 +25,8 @@ export const findById = async (id) => {
 export const create = async (cpuParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${cpuTable} (CpuName, Cores, Logicals, Tdp, Socket, Speed, Turbo, CategoryId, SupplierId, UnitPrice, UnitsInStock, Discontinued, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${cpuTable} (Cores, Logicals, Tdp, Socket, Speed, Turbo, CreatedAt, UpdatedAt)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     cpuParams,
   );
   return result.insertId;
@@ -36,7 +36,7 @@ export const updateById = async (id, cpuParams) => {
   const pool = await initializeDatabase();
   const params = [...cpuParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${cpuTable} SET CpuName = ?, Cores = ?, Logicals = ?, Tdp = ?, Socket = ?, Speed = ?, Turbo = ?, CategoryId = ?, SupplierId = ?, UnitPrice = ?, UnitsInStock = ?, Discontinued = ?, CreatedAt = ?, UpdatedAt = ? WHERE CpuId = ?`,
+    `UPDATE ${cpuTable} SET Cores = ?, Logicals = ?, Tdp = ?, Socket = ?, Speed = ?, Turbo = ?, CreatedAt = ?, UpdatedAt = ? WHERE CpuId = ?`,
     params,
   );
   return result.affectedRows;

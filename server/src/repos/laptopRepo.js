@@ -25,8 +25,19 @@ export const findById = async (id) => {
 export const create = async (laptopParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${laptopTable} (LaptopCode, LaptopName, LaptopType, Inches, ScreenResolution, CpuId, GpuId, Memory, OpSys, Weight, CategoryId, SupplierId, UnitPrice, UnitsInStock, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${laptopTable} (
+      LaptopType,
+      Inches, 
+      ScreenResolution, 
+      CpuId, 
+      GpuId, 
+      Memory, 
+      OpSys, 
+      Weight, 
+      CreatedAt, 
+      UpdatedAt
+    )
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     laptopParams,
   );
   return result.insertId;
@@ -36,7 +47,17 @@ export const updateById = async (id, laptopParams) => {
   const pool = await initializeDatabase();
   const params = [...laptopParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${laptopTable} SET LaptopCode = ?, LaptopName = ?, LaptopType = ?, Inches = ?, ScreenResolution = ?, CpuId = ?, GpuId = ?, Memory = ?, OpSys = ?, Weight = ?, CategoryId = ?, SupplierId = ?, UnitPrice = ?, UnitsInStock = ?, CreatedAt = ?, UpdatedAt = ? WHERE LaptopId = ?`,
+    `UPDATE ${laptopTable} SET 
+      LaptopType = ?, 
+      Inches = ?, 
+      ScreenResolution = ?, 
+      CpuId = ?, GpuId = ?, 
+      Memory = ?, 
+      OpSys = ?, 
+      Weight = ?, 
+      CreatedAt = ?, 
+      UpdatedAt = ? 
+    WHERE LaptopId = ?`,
     params,
   );
   return result.affectedRows;

@@ -54,6 +54,10 @@ export const up = async (queryInterface) => {
       type: DataTypes.STRING(20),
       allowNull: true,
     },
+    CIC: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     CreatedAt: {
       type: DataTypes.DATE,
       allowNull: false,

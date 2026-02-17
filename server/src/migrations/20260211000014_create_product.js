@@ -1,65 +1,59 @@
 import { DataTypes, Sequelize } from "sequelize";
 
 export const up = async (queryInterface) => {
-  await queryInterface.createTable("InvoiceDetails", {
-    InvoiceDetailId: {
+  await queryInterface.createTable("Products", {
+    ProductId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-
-    InvoiceId: {
-      type: DataTypes.INTEGER,
+    ProductCode: {
+      type: DataTypes.STRING(50),
       allowNull: false,
-      references: {
-        model: "Invoices",
-        key: "InvoiceId",
-      },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
+      unique: true,
     },
-    ProductId: {
+    ProductName: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    CategoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Products",
-        key: "ProductId",
+        model: "Categories",
+        key: "CategoryId",
       },
       onDelete: "RESTRICT",
       onUpdate: "CASCADE",
     },
-
-    ProductName: {
-      type: DataTypes.STRING(150),
+    SupplierId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "Suppliers",
+        key: "SupplierId",
+      },
+      onDelete: "RESTRICT",
+      onUpdate: "CASCADE",
     },
-
     UnitPrice: {
-      type: DataTypes.DECIMAL(12, 2),
-      allowNull: false,
-    },
-
-    Quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-
-    DiscountPercent: {
-      type: DataTypes.DECIMAL(5, 2),
-      defaultValue: 0,
-    },
-
-    LineTotal: {
-      type: DataTypes.DECIMAL(14, 2),
+    UnitsInStock: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-
+    Discontinued: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     CreatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: Sequelize.fn("NOW"),
     },
-
     UpdatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -69,5 +63,5 @@ export const up = async (queryInterface) => {
 };
 
 export const down = async (queryInterface) => {
-  await queryInterface.dropTable("InvoiceDetails");
+  await queryInterface.dropTable("Products");
 };

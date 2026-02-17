@@ -25,8 +25,19 @@ export const findById = async (id) => {
 export const create = async (gpuParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${gpuTable} (GpuName, MemorySize, MemoryType, Clock, UnifiedShader, Tmu, Rop, Bus, Chip, CategoryId, SupplierId, UnitPrice, UnitsInStock, Discontinued, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${gpuTable} (
+      MemorySize,
+      MemoryType,
+      Clock,
+      UnifiedShader,
+      Tmu,
+      Rop,
+      Bus,
+      Chip,
+      CreatedAt,
+      UpdatedAt
+    )
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     gpuParams,
   );
   return result.insertId;
@@ -36,7 +47,18 @@ export const updateById = async (id, gpuParams) => {
   const pool = await initializeDatabase();
   const params = [...gpuParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${gpuTable} SET GpuName = ?, MemorySize = ?, MemoryType = ?, Clock = ?, UnifiedShader = ?, Tmu = ?, Rop = ?, Bus = ?, Chip = ?, CategoryId = ?, SupplierId = ?, UnitPrice = ?, UnitsInStock = ?, Discontinued = ?, CreatedAt = ?, UpdatedAt = ? WHERE GpuId = ?`,
+    `UPDATE ${gpuTable} SET
+      MemorySize = ?,
+      MemoryType = ?,
+      Clock = ?, 
+      UnifiedShader = ?, 
+      Tmu = ?, 
+      Rop = ?, 
+      Bus = ?, 
+      Chip = ?, 
+      CreatedAt = ?, 
+      UpdatedAt = ? 
+    WHERE GpuId = ?`,
     params,
   );
   return result.affectedRows;

@@ -30,6 +30,7 @@ export const createCustomer = async (data) => {
     data.country,
     data.address,
     data.phone,
+    data.cic,
     new Date(),
     new Date(),
   ]);
@@ -58,6 +59,7 @@ export const updateCustomer = async (id, data) => {
     data.country || existing.Country,
     data.address || existing.Address,
     data.phone || existing.Phone,
+    data.cic || existing.CIC,
     existing.CreatedAt,
     new Date(),
   ]);

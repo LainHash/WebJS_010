@@ -13,6 +13,7 @@ import invoiceRoute from "./routes/invoiceRoute.js";
 import invoiceDetailRoute from "./routes/invoiceDetailRoute.js";
 import paymentRoute from "./routes/paymentRoute.js";
 import shipmentRoute from "./routes/shipmentRoute.js";
+import productRoute from "./routes/productRoute.js";
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/api/invoices", invoiceRoute);
 app.use("/api/invoice-details", invoiceDetailRoute);
 app.use("/api/payments", paymentRoute);
 app.use("/api/shipments", shipmentRoute);
+app.use("/api/products", productRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello, World");

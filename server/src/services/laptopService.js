@@ -21,8 +21,6 @@ export const createLaptop = async (data) => {
     throw err;
   }
   const insertId = await laptopRepo.create([
-    data.code,
-    data.name,
     data.type,
     data.inches,
     data.screen,
@@ -31,10 +29,6 @@ export const createLaptop = async (data) => {
     data.memory,
     data.os,
     data.weight,
-    data.categoryId,
-    data.supplierId,
-    data.unitPrice,
-    data.unitsInStock,
     new Date(),
     new Date(),
   ]);
@@ -54,8 +48,6 @@ export const updateLaptop = async (id, data) => {
     throw err;
   }
   const affected = await laptopRepo.updateById(id, [
-    data.code || existing.Code,
-    data.name || existing.Name,
     data.type || existing.Type,
     data.inches || existing.Inches,
     data.screen || existing.ScreenResolution,
@@ -64,10 +56,6 @@ export const updateLaptop = async (id, data) => {
     data.memory || existing.Memory,
     data.os || existing.OpSys,
     data.weight || existing.Weight,
-    data.categoryId || existing.CategoryId,
-    data.supplierId || existing.SupplierId,
-    data.unitPrice || existing.UnitPrice,
-    data.unitsInStock || existing.UnitsInStock,
     existing.CreatedAt,
     new Date(),
   ]);

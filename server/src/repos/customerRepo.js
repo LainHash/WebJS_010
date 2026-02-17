@@ -25,8 +25,20 @@ export const findById = async (id) => {
 export const create = async (customerParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${customerTable} (AccountId, Lastname, Firstname, Gender, Birthday, City, Country, Address, Phone, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${customerTable} (AccountId, 
+      Lastname, 
+      Firstname, 
+      Gender, 
+      Birthday, 
+      City, 
+      Country, 
+      Address, 
+      Phone, 
+      CIC, 
+      CreatedAt, 
+      UpdatedAt
+    )
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     customerParams,
   );
   return result.insertId;
@@ -36,7 +48,19 @@ export const updateById = async (id, customerParams) => {
   const pool = await initializeDatabase();
   const params = [...customerParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${customerTable} SET AccountId = ?, Lastname = ?, Firstname = ?, Gender = ?, Birthday = ?, City = ?, Country = ?, Address = ?, Phone = ?, CreatedAt = ?, UpdatedAt = ? WHERE CustomerId = ?`,
+    `UPDATE ${customerTable} SET AccountId = ?, 
+      Lastname = ?, 
+      Firstname = ?, 
+      Gender = ?, 
+      Birthday = ?,
+      City = ?, 
+      Country = ?, 
+      Address = ?, 
+      Phone = ?, 
+      CIC = ?, 
+      CreatedAt = ?, 
+      UpdatedAt = ? 
+    WHERE CustomerId = ?`,
     params,
   );
   return result.affectedRows;

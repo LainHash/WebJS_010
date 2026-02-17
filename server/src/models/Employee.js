@@ -7,6 +7,7 @@ export default class Employee {
   Gender;
   Birthday;
   Phone;
+  CIC;
   Address;
   BusinessEmail;
   Department;
@@ -27,6 +28,7 @@ export default class Employee {
     gender,
     birthday,
     phone,
+    cic,
     address,
     businessEmail,
     department,
@@ -46,6 +48,7 @@ export default class Employee {
     this.Gender = gender;
     this.Birthday = birthday;
     this.Phone = phone;
+    this.CIC = cic;
     this.Address = address;
     this.BusinessEmail = businessEmail;
     this.Department = department;
@@ -69,6 +72,7 @@ export default class Employee {
       gender: row.Gender,
       birthday: row.Birthday,
       phone: row.Phone,
+      cic: row.CIC,
       address: row.Address,
       businessEmail: row.BusinessEmail,
       department: row.Department,
@@ -89,6 +93,7 @@ export default class Employee {
       this.Gender,
       this.Birthday,
       this.Phone,
+      this.CIC,
       this.Address,
       this.BusinessEmail,
       this.Department,
@@ -111,6 +116,7 @@ export default class Employee {
       this.Gender,
       this.Birthday,
       this.Phone,
+      this.CIC,
       this.Address,
       this.BusinessEmail,
       this.Department,

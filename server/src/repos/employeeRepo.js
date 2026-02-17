@@ -25,8 +25,27 @@ export const findById = async (id) => {
 export const create = async (employeeParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${employeeTable} (EmployeeCode, AccountId, Lastname, Firstname, Gender, Birthday, Phone, Address, BusinessEmail, Department, Position, HiredDate, Salary, ManagerId, Status, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${employeeTable} (
+      EmployeeCode, 
+      AccountId, 
+      Lastname, 
+      Firstname, 
+      Gender, 
+      Birthday, 
+      Phone, 
+      CIC,
+      Address, 
+      BusinessEmail, 
+      Department, 
+      Position, 
+      HiredDate, 
+      Salary, 
+      ManagerId, 
+      Status, 
+      CreatedAt, 
+      UpdatedAt
+    )
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     employeeParams,
   );
   return result.insertId;
@@ -36,7 +55,26 @@ export const updateById = async (id, employeeParams) => {
   const pool = await initializeDatabase();
   const params = [...employeeParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${employeeTable} SET EmployeeCode = ?, AccountId = ?, Lastname = ?, Firstname = ?, Gender = ?, Birthday = ?, Phone = ?, Address = ?, BusinessEmail = ?, Department = ?, Position = ?, HiredDate = ?, Salary = ?, ManagerId = ?, Status = ?, CreatedAt = ?, UpdatedAt = ? WHERE EmployeeId = ?`,
+    `UPDATE ${employeeTable} SET 
+      EmployeeCode = ?, 
+      AccountId = ?, 
+      Lastname = ?, 
+      Firstname = ?, 
+      Gender = ?, 
+      Birthday = ?, 
+      Phone = ?, 
+      CIC = ?, 
+      Address = ?, 
+      BusinessEmail = ?, 
+      Department = ?, 
+      Position = ?, 
+      HiredDate = ?, 
+      Salary = ?, 
+      ManagerId = ?, 
+      Status = ?, 
+      CreatedAt = ?, 
+      UpdatedAt = ? 
+    WHERE EmployeeId = ?`,
     params,
   );
   return result.affectedRows;

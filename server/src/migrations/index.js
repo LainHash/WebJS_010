@@ -22,6 +22,7 @@ export const runMigrations = async () => {
     import("./20260211000002_create_user.js"),
     import("./20260211000003_create_supplier.js"),
     import("./20260211000004_create_category.js"),
+    import("./20260211000014_create_product.js"),
     import("./20260211000005_create_cpu.js"),
     import("./20260211000006_create_gpu.js"),
     import("./20260211000007_create_customer.js"),
