@@ -74,6 +74,7 @@ export default class Customer {
       this.Phone,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 
@@ -90,6 +91,7 @@ export default class Customer {
       this.Phone,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 }

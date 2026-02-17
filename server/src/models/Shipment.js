@@ -75,6 +75,7 @@ export default class Shipment {
       this.DeliveredAt || null,
       this.CreatedAt || null,
       this.UpdatedAt || null,
+      this.Id,
     ];
   }
 
@@ -90,6 +91,7 @@ export default class Shipment {
       this.DeliveredAt || null,
       this.CreatedAt || null,
       this.UpdatedAt || null,
+      this.Id,
     ];
   }
 }

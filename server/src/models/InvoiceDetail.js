@@ -1,20 +1,23 @@
 export default class InvoiceDetail {
   Id;
   InvoiceId;
-  ProductType;
   ProductId;
+  CategoryId;
   ProductName;
+
   UnitPrice;
   Quantity;
   DiscountPercent;
   LineTotal;
+
   CreatedAt;
   UpdatedAt;
+
   constructor({
     id,
     invoiceId,
-    productType,
     productId,
+    categoryId,
     productName,
     unitPrice,
     quantity,
@@ -25,8 +28,8 @@ export default class InvoiceDetail {
   } = {}) {
     this.Id = id;
     this.InvoiceId = invoiceId;
-    this.ProductType = productType;
     this.ProductId = productId;
+    this.CategoryId = categoryId;
     this.ProductName = productName;
     this.UnitPrice = unitPrice;
     this.Quantity = quantity;
@@ -41,8 +44,8 @@ export default class InvoiceDetail {
     return new InvoiceDetail({
       id: row.InvoiceDetailId,
       invoiceId: row.InvoiceId,
-      productType: row.ProductType,
       productId: row.ProductId,
+      categoryId: row.CategoryId,
       productName: row.ProductName,
       unitPrice: row.UnitPrice,
       quantity: row.Quantity,
@@ -56,8 +59,8 @@ export default class InvoiceDetail {
   toInsertParams() {
     return [
       this.InvoiceId,
-      this.ProductType,
       this.ProductId,
+      this.CategoryId,
       this.ProductName,
       this.UnitPrice,
       this.Quantity,
@@ -65,14 +68,15 @@ export default class InvoiceDetail {
       this.LineTotal,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 
   toUpdateParams() {
     return [
       this.InvoiceId,
-      this.ProductType,
       this.ProductId,
+      this.CategoryId,
       this.ProductName,
       this.UnitPrice,
       this.Quantity,
@@ -80,6 +84,7 @@ export default class InvoiceDetail {
       this.LineTotal,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 }

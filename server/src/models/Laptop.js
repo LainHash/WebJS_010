@@ -1,7 +1,5 @@
 export default class Laptop {
-  Id;
-  Code;
-  Name;
+  ProductId;
   Type;
   Inches;
   ScreenResolution;
@@ -10,17 +8,10 @@ export default class Laptop {
   Memory;
   OpSys;
   Weight;
-  CategoryId;
-  SupplierId;
-  UnitPrice;
-  UnitsInStock;
-  Discontinued;
   CreatedAt = null;
   UpdatedAt = null;
   constructor({
-    id,
-    code,
-    name,
+    productId,
     type,
     inches,
     screen,
@@ -29,17 +20,10 @@ export default class Laptop {
     memory,
     os,
     weight,
-    categoryId,
-    supplierId,
-    unitPrice,
-    unitsInStock,
-    discontinued,
     createdAt,
     updatedAt,
   } = {}) {
-    this.Id = id;
-    this.Code = code;
-    this.Name = name;
+    this.ProductId = productId;
     this.Type = type;
     this.Inches = inches;
     this.ScreenResolution = screen;
@@ -48,20 +32,13 @@ export default class Laptop {
     this.Memory = memory;
     this.OpSys = os;
     this.Weight = weight;
-    this.CategoryId = categoryId;
-    this.SupplierId = supplierId;
-    this.UnitPrice = unitPrice;
-    this.UnitsInStock = unitsInStock;
-    this.Discontinued = discontinued;
     this.CreatedAt = createdAt;
     this.UpdatedAt = updatedAt;
   }
   static fromDb(row) {
     if (!row) return null;
     return new Laptop({
-      id: row.LaptopId,
-      code: row.LaptopCode,
-      name: row.LaptopName,
+      productId: row.LaptopId,
       type: row.LaptopType,
       inches: row.Inches,
       screen: row.ScreenResolution,
@@ -70,20 +47,12 @@ export default class Laptop {
       memory: row.Memory,
       os: row.OpSys,
       weight: row.Weight,
-      categoryId: row.CategoryId,
-      supplierId: row.SupplierId,
-      unitPrice: row.UnitPrice,
-      unitsInStock: row.UnitsInStock,
-      discontinued: row.Discontinued,
       createdAt: row.CreatedAt,
       updatedAt: row.UpdatedAt,
     });
   }
   toInsertParams() {
     return [
-      this.Id,
-      this.Code,
-      this.Name,
       this.Type,
       this.Inches,
       this.ScreenResolution,
@@ -92,20 +61,13 @@ export default class Laptop {
       this.Memory,
       this.OpSys,
       this.Weight,
-      this.CategoryId,
-      this.SupplierId,
-      this.UnitPrice,
-      this.UnitsInStock,
-      this.Discontinued,
       this.CreatedAt,
       this.UpdatedAt,
+      this.ProductId,
     ];
   }
   toUpdateParams() {
     return [
-      this.Id,
-      this.Code,
-      this.Name,
       this.Type,
       this.Inches,
       this.ScreenResolution,
@@ -114,13 +76,9 @@ export default class Laptop {
       this.Memory,
       this.OpSys,
       this.Weight,
-      this.CategoryId,
-      this.SupplierId,
-      this.UnitPrice,
-      this.UnitsInStock,
-      this.Discontinued,
       this.CreatedAt,
       this.UpdatedAt,
+      this.ProductId,
     ];
   }
 }

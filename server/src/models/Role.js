@@ -33,9 +33,21 @@ export default class Role {
     });
   }
   toInserParams() {
-    return [this.Name, this.Description, this.CreatedAt, this.UpdatedAt];
+    return [
+      this.Name,
+      this.Description,
+      this.CreatedAt,
+      this.UpdatedAt,
+      this.Id,
+    ];
   }
   toUpdateParams() {
-    return [this.Name, this.Description, this.CreatedAt, this.UpdatedAt];
+    return [
+      this.Name,
+      this.Description,
+      this.CreatedAt,
+      this.UpdatedAt,
+      this.Id,
+    ];
   }
 }

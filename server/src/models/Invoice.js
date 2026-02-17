@@ -3,23 +3,29 @@ export default class Invoice {
   Code;
   CustomerId;
   EmployeeId;
+
   OrderDate;
   RequiredDate;
   ShippedDate = null;
+
   Status;
   PaymentStatus;
   ShipmentStatus;
+
   Subtotal;
   DiscountAmount;
   TaxAmount;
   ShippingFee;
   TotalAmount;
+
   ShippingName;
   ShippingPhone;
   ShippingAddress;
   ShippingCity;
   ShippingCountry;
+
   Note = null;
+
   CreatedAt = null;
   UpdatedAt = null;
   constructor({
@@ -124,6 +130,7 @@ export default class Invoice {
       this.Note,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 
@@ -150,6 +157,7 @@ export default class Invoice {
       this.Note,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 }

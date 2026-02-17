@@ -55,6 +55,7 @@ export default class User {
       this.IsActive,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 
@@ -67,6 +68,7 @@ export default class User {
       this.IsActive,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 

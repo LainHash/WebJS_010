@@ -99,6 +99,7 @@ export default class Employee {
       this.Status,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 
@@ -120,6 +121,7 @@ export default class Employee {
       this.Status,
       this.CreatedAt,
       this.UpdatedAt,
+      this.Id,
     ];
   }
 }

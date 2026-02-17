@@ -74,6 +74,7 @@ export default class Payment {
       this.PaidAt || null,
       this.CreatedAt || null,
       this.UpdatedAt || null,
+      this.Id,
     ];
   }
   toUpdateParams() {
@@ -88,6 +89,7 @@ export default class Payment {
       this.PaidAt || null,
       this.CreatedAt || null,
       this.UpdatedAt || null,
+      this.Id,
     ];
   }
 }

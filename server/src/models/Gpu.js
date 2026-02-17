@@ -1,7 +1,5 @@
 export default class Gpu {
-  Id;
-  Code;
-  Name;
+  ProductId;
   MemorySize;
   MemoryType;
   Clock;
@@ -10,18 +8,11 @@ export default class Gpu {
   Rop;
   Bus;
   Igpu;
-  CategoryId;
-  SupplierId;
-  UnitPrice;
-  UnitsInStock;
-  Discontinued;
   CreatedAt = null;
   UpdatedAt = null;
 
   constructor({
-    id,
-    code,
-    name,
+    productId,
     memorySize,
     memoryType,
     clock,
@@ -30,17 +21,10 @@ export default class Gpu {
     rop,
     bus,
     igpu,
-    categoryId,
-    supplierId,
-    unitPrice,
-    unitsInStock,
-    discontinued,
     createdAt = null,
     updatedAt = null,
   } = {}) {
-    this.Id = id;
-    this.Code = code;
-    this.Name = name;
+    this.ProductId = productId;
     this.MemorySize = memorySize;
     this.MemoryType = memoryType;
     this.Clock = clock;
@@ -49,20 +33,13 @@ export default class Gpu {
     this.Rop = rop;
     this.Bus = bus;
     this.Igpu = igpu;
-    this.CategoryId = categoryId;
-    this.SupplierId = supplierId;
-    this.UnitPrice = unitPrice;
-    this.UnitsInStock = unitsInStock;
-    this.Discontinued = discontinued;
     this.CreatedAt = createdAt;
     this.UpdatedAt = updatedAt;
   }
   static fromDb(row) {
     if (!row) return null;
     return new Gpu({
-      id: row.GpuId,
-      code: row.GpuCode,
-      name: row.GpuName,
+      productId: row.GpuId,
       memorySize: row.MemorySize,
       memoryType: row.MemoryType,
       clock: row.Clock,
@@ -76,8 +53,6 @@ export default class Gpu {
       unitPrice: row.UnitPrice,
       unitsInStock: row.UnitsInStock,
       discontinued: row.Discontinued,
-      createdAt: row.CreatedAt,
-      updatedAt: row.UpdatedAt,
     });
   }
 
@@ -101,10 +76,25 @@ export default class Gpu {
       this.UpdatedAt,
     ];
   }
+  static fromDb(row) {
+    if (!row) return null;
+    return new Gpu({
+      productId: row.GpuId,
+      memorySize: row.MemorySize,
+      memoryType: row.MemoryType,
+      clock: row.Clock,
+      unifiedShader: row.UnifiedShader,
+      tmu: row.Tmu,
+      rop: row.Rop,
+      bus: row.Bus,
+      igpu: row.Igpu,
+      createdAt: row.CreatedAt,
+      updatedAt: row.UpdatedAt,
+    });
+  }
 
-  toUpdateParams() {
+  toInsertParams() {
     return [
-      this.Name,
       this.MemorySize,
       this.MemoryType,
       this.Clock,
@@ -113,13 +103,25 @@ export default class Gpu {
       this.Rop,
       this.Bus,
       this.Igpu,
-      this.CategoryId,
-      this.SupplierId,
-      this.UnitPrice,
-      this.UnitsInStock,
-      this.Discontinued,
       this.CreatedAt,
       this.UpdatedAt,
+      this.ProductId,
+    ];
+  }
+
+  toUpdateParams() {
+    return [
+      this.MemorySize,
+      this.MemoryType,
+      this.Clock,
+      this.UnifiedShader,
+      this.Tmu,
+      this.Rop,
+      this.Bus,
+      this.Igpu,
+      this.CreatedAt,
+      this.UpdatedAt,
+      this.ProductId,
     ];
   }
 }

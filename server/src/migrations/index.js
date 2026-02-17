@@ -18,15 +18,19 @@ export const runMigrations = async () => {
 
   // Import all migrations
   const migrations = [
-    import("./20250211000001_create_role.js"),
-    import("./20250211000002_create_user.js"),
-    import("./20250211000003_create_supplier.js"),
-    import("./20250211000004_create_category.js"),
-    import("./20250211000005_create_cpu.js"),
-    import("./20250211000006_create_gpu.js"),
-    import("./20250211000007_create_customer.js"),
-    import("./20250211000008_create_employee.js"),
-    import("./20250211000009_create_laptop.js"),
+    import("./20260211000001_create_role.js"),
+    import("./20260211000002_create_user.js"),
+    import("./20260211000003_create_supplier.js"),
+    import("./20260211000004_create_category.js"),
+    import("./20260211000005_create_cpu.js"),
+    import("./20260211000006_create_gpu.js"),
+    import("./20260211000007_create_customer.js"),
+    import("./20260211000008_create_employee.js"),
+    import("./20260211000009_create_laptop.js"),
+    import("./20260211000010_create_invoice.js"),
+    import("./20260211000011_create_invoice_detail.js"),
+    import("./20260211000012_create_payment.js"),
+    import("./20260211000013_create_shipment.js"),
   ];
 
   try {
