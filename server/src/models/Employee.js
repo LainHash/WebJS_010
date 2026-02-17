@@ -83,8 +83,6 @@ export default class Employee {
   }
   toInsertParams() {
     return [
-      this.Id,
-      this.Code,
       this.AccountId,
       this.Lastname,
       this.Firstname,
@@ -106,8 +104,6 @@ export default class Employee {
 
   toUpdateParams() {
     return [
-      this.Id,
-      this.Code,
       this.AccountId,
       this.Lastname,
       this.Firstname,
