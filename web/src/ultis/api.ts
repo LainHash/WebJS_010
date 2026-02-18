@@ -1,6 +1,6 @@
 const API_BASE_URL = (import.meta.env.VITE_API_URL as string) || "http://localhost:3000/api";
 
-async function apiCall<T = any>(endpoint: string, options?: RequestInit): Promise<T> {
+export async function apiCall<T = any>(endpoint: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: { "Content-Type": "application/json", ...(options?.headers || {}) },
     ...options,
@@ -14,17 +14,10 @@ async function apiCall<T = any>(endpoint: string, options?: RequestInit): Promis
   return (await res.json()) as T;
 }
 
-export const getLaptops = () => apiCall<any[]>("/laptops");
-export const getLaptop = (id: string | number) => apiCall<any>(`/laptops/${id}`);
-export const createLaptop = (payload: any) => apiCall<any>("/laptops", { method: "POST", body: JSON.stringify(payload) });
-export const updateLaptop = (id: string | number, payload: any) => apiCall<any>(`/laptops/${id}`, { method: "PUT", body: JSON.stringify(payload) });
-export const deleteLaptop = (id: string | number) => apiCall<void>(`/laptops/${id}`, { method: "DELETE" });
+export async function buildUrl(endpoint: string, params?: Record<string, any>): Promise<string> {
+  if (!params) return endpoint;
+  const url = new URL(endpoint, API_BASE_URL);
+  Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, String(value)));
+  return url.pathname + url.search;
+}
 
-export default {
-  apiCall,
-  getLaptops,
-  getLaptop,
-  createLaptop,
-  updateLaptop,
-  deleteLaptop,
-};

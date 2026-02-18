@@ -22,3 +22,8 @@
 @import "./pages/testimonials.css";
 @import "./pages/auth.css";
 @import "./pages/account-detail.css";
+
+@import "tailwindcss";
+
+
+
