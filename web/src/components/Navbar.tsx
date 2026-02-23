@@ -3,8 +3,8 @@ import { Link, NavLink } from "react-router";
 
 const navLinks = [
   { to: "/", label: "Trang chủ" },
-  { to: "/laptops", label: "Sản phẩm" },
-  { to: "/contact", label: "Liên hệ" },
+  { to: "/products", label: "Sản phẩm" },
+  // { to: "/contact", label: "Liên hệ" },
 ];
 
 function Navbar() {

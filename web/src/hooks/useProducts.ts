@@ -11,6 +11,10 @@ interface UseProductsResult {
   sort: SortCriteria;
   setPage: (p: number) => void;
   setSort: (criteria: SortCriteria) => void;
+  categoryFilter: number | null;
+  setCategoryFilter: (id: number | null) => void;
+  supplierFilter: number | null;
+  setSupplierFilter: (id: number | null) => void;
   reload: () => void;
 }
 
@@ -31,6 +35,8 @@ export function useProducts(
 
   const [page, setPage] = useState(initialPage);
   const [sort, setSort] = useState<SortCriteria>("");
+  const [categoryFilter, setCategoryFilter] = useState<number | null>(null);
+  const [supplierFilter, setSupplierFilter] = useState<number | null>(null);
 
   const fetchProducts = useCallback(async () => {
     setIsLoading(true);
@@ -52,7 +58,15 @@ export function useProducts(
   }, [fetchProducts]);
 
   const sorted = useMemo(() => {
-    const arr = [...allProducts];
+    // apply filters first
+    let arr = allProducts;
+    if (categoryFilter !== null) {
+      arr = arr.filter((p) => p.CategoryId === categoryFilter);
+    }
+    if (supplierFilter !== null) {
+      arr = arr.filter((p) => p.SupplierId === supplierFilter);
+    }
+    arr = [...arr];
     switch (sort) {
       case "name-asc":
         return arr.sort((a, b) => a.Name.localeCompare(b.Name));
@@ -65,7 +79,7 @@ export function useProducts(
       default:
         return arr;
     }
-  }, [allProducts, sort]);
+  }, [allProducts, sort, categoryFilter, supplierFilter]);
 
   const totalCount = sorted.length;
   const products = useMemo(() => {
@@ -82,6 +96,10 @@ export function useProducts(
     sort,
     setPage,
     setSort,
+    categoryFilter,
+    setCategoryFilter,
+    supplierFilter,
+    setSupplierFilter,
     reload: fetchProducts,
   };
 }

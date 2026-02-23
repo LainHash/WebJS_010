@@ -1,5 +1,9 @@
 import ProductCard from "./ProductCard";
 import { useProducts } from "~/hooks/useProducts";
+import { useEffect, useState } from "react";
+import type { Category } from "~/types/Category";
+import type { Supplier } from "~/types/Supplier";
+import { getCategories, getSuppliers } from "~/services/productService";
 
 const ProductGrid = () => {
   const {
@@ -11,13 +15,25 @@ const ProductGrid = () => {
     sort,
     setPage,
     setSort,
+    categoryFilter,
+    setCategoryFilter,
+    supplierFilter,
+    setSupplierFilter,
   } = useProducts();
+
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [suppliers, setSuppliers] = useState<Supplier[]>([]);
+
+  useEffect(() => {
+    getCategories().then(setCategories).catch(console.error);
+    getSuppliers().then(setSuppliers).catch(console.error);
+  }, []);
 
   const pageCount = Math.ceil(totalCount / 40);
 
   const handleSortChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(ev.target.value as any);
-    setPage(1); // reset to first page when sorting changes
+    setPage(1);
   };
 
   return (
@@ -30,6 +46,38 @@ const ProductGrid = () => {
             <option value="name-desc">Tên (Z-A)</option>
             <option value="price-asc">Giá tăng dần</option>
             <option value="price-desc">Giá giảm dần</option>
+          </select>
+
+          <select
+            value={categoryFilter ?? ""}
+            onChange={(e) => {
+              const v = e.target.value;
+              setCategoryFilter(v ? parseInt(v, 10) : null);
+              setPage(1);
+            }}
+          >
+            <option value="">Tất cả danh mục</option>
+            {categories.map((c) => (
+              <option key={c.Id} value={c.Id}>
+                {c.Name}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={supplierFilter ?? ""}
+            onChange={(e) => {
+              const v = e.target.value;
+              setSupplierFilter(v ? parseInt(v, 10) : null);
+              setPage(1);
+            }}
+          >
+            <option value="">Tất cả nhà cung cấp</option>
+            {suppliers.map((s) => (
+              <option key={s.Id} value={s.Id}>
+                {s.CompanyName}
+              </option>
+            ))}
           </select>
         </div>
 

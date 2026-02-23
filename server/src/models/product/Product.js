@@ -18,7 +18,9 @@ export default class Product {
     code,
     name,
     categoryId,
+    categoryName,
     supplierId,
+    companyName,
     unitPrice,
     unitsInStock,
     discontinued,
@@ -29,7 +31,9 @@ export default class Product {
     this.Code = code;
     this.Name = name;
     this.CategoryId = categoryId;
+    this.CategoryName = categoryName;
     this.SupplierId = supplierId;
+    this.CompanyName = companyName;
     this.UnitPrice = unitPrice;
     this.UnitsInStock = unitsInStock;
     this.Discontinued = discontinued;
@@ -43,7 +47,9 @@ export default class Product {
       code: row.ProductCode,
       name: row.ProductName,
       categoryId: row.CategoryId,
+      categoryName: row.CategoryName,
       supplierId: row.SupplierId,
+      companyName: row.CompanyName,
       unitPrice: row.UnitPrice,
       unitsInStock: row.UnitsInStock,
       discontinued: row.Discontinued,

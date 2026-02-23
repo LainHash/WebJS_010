@@ -3,6 +3,8 @@ import type {
   ProductResponse,
   ProductListResponse,
 } from "~/types/Product";
+import type { Category } from "~/types/Category";
+import type { Supplier } from "~/types/Supplier";
 import { apiCall, buildUrl } from "~/ultis/api";
 
 export const getProducts = async (
@@ -10,14 +12,13 @@ export const getProducts = async (
   pageSize: number,
 ): Promise<ProductListResponse> => {
   const url = await buildUrl("/products", { page, pageSize });
-  // the server currently returns a plain array of products, so fetch that
   const products = await apiCall<Product[]>(url);
-  // wrap the array into the expected shape; success and totalCount are derived
   return { products, success: true, totalCount: products.length };
 };
 
 export const getProduct = async (id: number): Promise<ProductResponse> => {
-  return apiCall<ProductResponse>(`/products/${id}`);
+  const raw = await apiCall<Product>(`/products/${id}`);
+  return { product: raw, success: true };
 };
 
 export const createProduct = async (
@@ -41,4 +42,15 @@ export const updateProduct = async (
 
 export const deleteProduct = async (id: number): Promise<void> => {
   await apiCall<void>(`/products/${id}`, { method: "DELETE" });
+};
+
+// // convenience helpers for category/supplier lists used by the UI filters
+export const getCategories = async (): Promise<Category[]> => {
+  const raw = await apiCall<Category[]>("/categories");
+  return raw;
+};
+
+export const getSuppliers = async (): Promise<Supplier[]> => {
+  const raw = await apiCall<Supplier[]>("/suppliers");
+  return raw;
 };

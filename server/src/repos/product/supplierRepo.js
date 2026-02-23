@@ -22,6 +22,16 @@ export const findById = async (id) => {
   return rows[0] || null;
 };
 
+// helper for resolving a supplier by company name
+export const findByName = async (companyName) => {
+  const pool = await initializeDatabase();
+  const [rows] = await pool.execute(
+    `SELECT * FROM ${suppliers} WHERE CompanyName = ?`,
+    [companyName],
+  );
+  return rows[0] || null;
+};
+
 export const create = async (supplierParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(

@@ -22,6 +22,16 @@ export const findById = async (id) => {
   return rows[0] || null;
 };
 
+// helper for resolving a category by its name
+export const findByName = async (name) => {
+  const pool = await initializeDatabase();
+  const [rows] = await pool.execute(
+    `SELECT * FROM ${categoryTable} WHERE CategoryName = ?`,
+    [name],
+  );
+  return rows[0] || null;
+};
+
 export const create = async (categoryParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(

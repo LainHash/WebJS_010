@@ -18,8 +18,9 @@ const ProductCard = ({ product }: { product: Product }) => {
       </h3>
       <ul>
         <li>Id: {product.Id}</li>
-        <li>Code: {product.Code}</li>
         <li>Name: {product.Name}</li>
+        {product.CategoryName && <li>Category: {product.CategoryName}</li>}
+        {product.CompanyName && <li>Supplier: {product.CompanyName}</li>}
       </ul>
       <div className="product-card__price">
         <span>{formatCurrency(product.UnitPrice)}</span>

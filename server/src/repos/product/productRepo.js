@@ -2,18 +2,19 @@ import { initializeDatabase } from "../../config/db.js";
 
 const productTable = "Products";
 
-export const findAll = async () => {
+// base queries returning only the columns defined on the Products table
+export const findAllBase = async () => {
   try {
     const pool = await initializeDatabase();
     const [rows] = await pool.execute(`SELECT * FROM \`${productTable}\``);
     return rows;
   } catch (error) {
-    console.error("SQL Error in findAll:", error.message || error);
+    console.error("SQL Error in findAllBase:", error.message || error);
     throw error;
   }
 };
 
-export const findById = async (id) => {
+export const findByIdBase = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
     `SELECT * FROM ${productTable} WHERE ProductId = ?`,
@@ -21,6 +22,40 @@ export const findById = async (id) => {
   );
   return rows[0] || null;
 };
+
+// specialized queries with joins or other derived columns
+export const findAllWithNames = async () => {
+  try {
+    const pool = await initializeDatabase();
+    const [rows] = await pool.execute(
+      `SELECT p.*, c.CategoryName AS CategoryName, s.CompanyName AS CompanyName
+       FROM \`${productTable}\` p
+       LEFT JOIN Categories c ON p.CategoryId = c.CategoryId OR p.CategoryId = c.CategoryId
+       LEFT JOIN Suppliers s ON p.SupplierId = s.SupplierId OR p.SupplierId = s.SupplierId`,
+    );
+    return rows;
+  } catch (error) {
+    console.error("SQL Error in findAllWithNames:", error.message || error);
+    throw error;
+  }
+};
+
+export const findByIdWithNames = async (id) => {
+  const pool = await initializeDatabase();
+  const [rows] = await pool.execute(
+    `SELECT p.*, c.CategoryName AS CategoryName, s.CompanyName AS CompanyName
+       FROM ${productTable} p
+       LEFT JOIN Categories c ON p.CategoryId = c.CategoryId OR p.CategoryId = c.CategoryId
+       LEFT JOIN Suppliers s ON p.SupplierId = s.SupplierId OR p.SupplierId = s.SupplierId
+       WHERE p.ProductId = ?`,
+    [id],
+  );
+  return rows[0] || null;
+};
+
+// keep original exports for backwards compatibility
+export const findAll = findAllWithNames;
+export const findById = findByIdWithNames;
 
 export const create = async (productParams) => {
   const pool = await initializeDatabase();
