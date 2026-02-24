@@ -1,5 +1,6 @@
 export interface Product {
   Id: number;
+  Code: string;
   Name: string;
   CategoryId: number;
   SupplierId: number;

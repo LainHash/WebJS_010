@@ -1,3 +1,4 @@
+import e from "express";
 import * as productService from "../../services/product/productService.js";
 
 export const list = async (req, res, next) => {
@@ -13,6 +14,39 @@ export const getOne = async (req, res, next) => {
   try {
     const id = parseInt(req.params.id, 10);
     const item = await productService.getById(id);
+    if (!item) return res.status(404).json({ message: "Product not found" });
+    res.json(item);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOneWithLaptop = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const item = await productService.getByIdWithLaptop(id);
+    if (!item) return res.status(404).json({ message: "Product not found" });
+    res.json(item);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOneWithCpu = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const item = await productService.getByIdWithCpu(id);
+    if (!item) return res.status(404).json({ message: "Product not found" });
+    res.json(item);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOneWithGpu = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const item = await productService.getByIdWithGpu(id);
     if (!item) return res.status(404).json({ message: "Product not found" });
     res.json(item);
   } catch (error) {

@@ -3,20 +3,31 @@ import * as categoryRepo from "../../repos/product/categoryRepo.js";
 import * as supplierRepo from "../../repos/product/supplierRepo.js";
 import Product from "../../models/product/Product.js";
 
-const mapBaseProduct = (row) => {
-  if (!row) return null;
-  return Product.fromDb(row);
-};
-
 export const getAll = async () => {
   const rows = await productRepo.findAllWithNames();
-  return rows.map(mapBaseProduct);
+  return rows;
 };
 
 export const getById = async (id) => {
-  const row = await productRepo.findByIdBase(id);
-  return mapBaseProduct(row);
+  const row = await productRepo.findByIdWithNames(id);
+  return row;
 };
+
+export const getByIdWithLaptop = async (id) => {
+  const row = await productRepo.findByIdWithLaptop(id);
+  return row;
+};
+
+export const getByIdWithCpu = async (id) => {
+  const row = await productRepo.findByIdWithCpu(id);
+  return row;
+};
+
+export const getByIdWithGpu = async (id) => {
+  const row = await productRepo.findByIdWithGpu(id);
+  return row;
+};
+
 export const createProduct = async (data) => {
   const product = new Product(data);
   const errors = product.validate();

@@ -7,18 +7,36 @@ import type { Category } from "~/types/Category";
 import type { Supplier } from "~/types/Supplier";
 import { apiCall, buildUrl } from "~/ultis/api";
 
+// Map database field names to frontend field names
+const mapProductFromDb = (raw: any): Product => {
+  return {
+    Id: raw.ProductId ?? raw.Id,
+    Name: raw.ProductName ?? raw.Name,
+    Code: raw.ProductCode ?? raw.Code,
+    CategoryId: raw.CategoryId,
+    SupplierId: raw.SupplierId,
+    CategoryName: raw.CategoryName,
+    CompanyName: raw.CompanyName,
+    UnitPrice: raw.UnitPrice,
+    UnitsInStock: raw.UnitsInStock,
+    Discontinued: raw.Discontinued,
+  };
+};
+
 export const getProducts = async (
   page: number,
   pageSize: number,
 ): Promise<ProductListResponse> => {
   const url = await buildUrl("/products", { page, pageSize });
-  const products = await apiCall<Product[]>(url);
+  const raw = await apiCall<any[]>(url);
+  const products = raw.map(mapProductFromDb);
   return { products, success: true, totalCount: products.length };
 };
 
 export const getProduct = async (id: number): Promise<ProductResponse> => {
-  const raw = await apiCall<Product>(`/products/${id}`);
-  return { product: raw, success: true };
+  const raw = await apiCall<any>(`/products/${id}`);
+  const product = mapProductFromDb(raw);
+  return { product, success: true };
 };
 
 export const createProduct = async (

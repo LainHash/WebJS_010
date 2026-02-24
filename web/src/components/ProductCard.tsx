@@ -9,7 +9,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className="product-card__badge">{"Product"}</div>
       <h3>
         <Link
-          to={`/products/product/${product.Id}`}
+          to={`/products/${product.Id}`}
           className="product-card__name"
           target="_blank"
         >
@@ -24,13 +24,38 @@ const ProductCard = ({ product }: { product: Product }) => {
       </ul>
       <div className="product-card__price">
         <span>{formatCurrency(product.UnitPrice)}</span>
-        <Link
+        {product.CategoryId === 1 ? (
+          <Link
+            className="price_link"
+            to={`/products/laptop/${product.Id}`}
+            target="_blank"
+          >
+            <ShoppingCartIcon className="w-5 h-5" />
+          </Link>
+        ) : product.CategoryId === 2 ? (
+          <Link
+            className="price_link"
+            to={`/products/cpu/${product.Id}`}
+            target="_blank"
+          >
+            <ShoppingCartIcon className="w-5 h-5" />
+          </Link>
+        ) : product.CategoryId === 3 ? (
+          <Link
+            className="price_link"
+            to={`/products/gpu/${product.Id}`}
+            target="_blank"
+          >
+            <ShoppingCartIcon className="w-5 h-5" />
+          </Link>
+        ) : null}
+        {/* <Link
           className="price_link"
-          to={`/products/product/${product.Id}`}
+          to={`/products/${product.Id}`}
           target="_blank"
         >
           <ShoppingCartIcon className="w-5 h-5" />
-        </Link>
+        </Link> */}
       </div>
     </article>
   );
