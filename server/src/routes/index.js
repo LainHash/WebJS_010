@@ -1,6 +1,7 @@
 import express from "express";
 import roleRoute from "./user/roleRoute.js";
 import userRoute from "./user/userRoute.js";
+import authRoute from "./user/authRoute.js";
 import supplierRoute from "./product/supplierRoute.js";
 import categoryRoute from "./product/categoryRoute.js";
 import cpuRoute from "./product/cpuRoute.js";
@@ -18,6 +19,7 @@ const router = express.Router();
 
 router.use("/roles", roleRoute);
 router.use("/users", userRoute);
+router.use("/auth", authRoute);
 router.use("/suppliers", supplierRoute);
 router.use("/categories", categoryRoute);
 router.use("/cpus", cpuRoute);

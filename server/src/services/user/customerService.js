@@ -12,7 +12,16 @@ export const getById = async (id) => {
 };
 
 export const createCustomer = async (data) => {
-  const customer = new Customer(data);
+  // generate code for the new customer, then construct the model so that we
+  // can rely on toInsertParams for ordering and validation
+  const code = await customerRepo.generateCustomerCode();
+  const now = new Date();
+  const customer = new Customer({
+    code,
+    ...data,
+    createdAt: now,
+    updatedAt: now,
+  });
   const errors = customer.validate();
   if (errors.length) {
     const err = new Error("Validation failed");
@@ -20,20 +29,7 @@ export const createCustomer = async (data) => {
     err.details = errors;
     throw err;
   }
-  const insertId = await customerRepo.create([
-    data.accountId,
-    data.lastname,
-    data.firstname,
-    data.gender,
-    data.birthday,
-    data.city,
-    data.country,
-    data.address,
-    data.phone,
-    data.cic,
-    new Date(),
-    new Date(),
-  ]);
+  const insertId = await customerRepo.create(customer.toInsertParams());
   customer.Id = insertId;
   return customer;
 };
@@ -49,20 +45,7 @@ export const updateCustomer = async (id, data) => {
     err.details = errors;
     throw err;
   }
-  const affected = await customerRepo.updateById(id, [
-    data.accountId || existing.AccountId,
-    data.lastname || existing.Lastname,
-    data.firstname || existing.Firstname,
-    data.gender || existing.Gender,
-    data.birthday || existing.Birthday,
-    data.city || existing.City,
-    data.country || existing.Country,
-    data.address || existing.Address,
-    data.phone || existing.Phone,
-    data.cic || existing.CIC,
-    existing.CreatedAt,
-    new Date(),
-  ]);
+  const affected = await customerRepo.updateById(id, updated.toUpdateParams());
   return affected > 0 ? await getById(id) : null;
 };
 

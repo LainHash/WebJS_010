@@ -1,5 +1,8 @@
 import * as userRepo from "../../repos/user/userRepo.js";
 import User from "../../models/user/User.js";
+import bcrypt from "bcrypt";
+
+const BCRYPT_SALT_ROUNDS = 10;
 
 export const getAll = async () => {
   const rows = await userRepo.findAll();
@@ -12,6 +15,10 @@ export const getById = async (id) => {
 };
 
 export const createUser = async (data) => {
+  // hash password if provided
+  if (data.password) {
+    data.passwordHash = await bcrypt.hash(data.password, BCRYPT_SALT_ROUNDS);
+  }
   const user = new User(data);
   const errors = user.validate();
   if (errors.length) {
@@ -28,6 +35,12 @@ export const createUser = async (data) => {
 export const updateUser = async (id, data) => {
   const existing = await getById(id);
   if (!existing) return null;
+
+  // if password is being updated hash it
+  if (data.password) {
+    data.passwordHash = await bcrypt.hash(data.password, BCRYPT_SALT_ROUNDS);
+  }
+
   const updated = new User({ ...existing, ...data, Id: id });
   const errors = updated.validate();
   if (errors.length) {

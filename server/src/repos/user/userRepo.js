@@ -2,6 +2,30 @@ import { initializeDatabase } from "../../config/db.js";
 
 const userTable = "Accounts";
 
+export const generateAccountCode = async () => {
+  const pool = await initializeDatabase();
+  const year2 = new Date().getFullYear().toString().slice(-2);
+  const prefix = `U${year2}`;
+
+  const [rows] = await pool.execute(
+    `SELECT AccountCode FROM ${userTable} WHERE AccountCode LIKE ? ORDER BY AccountId DESC LIMIT 1`,
+    [`${prefix}%`],
+  );
+
+  let nextSeq = 1;
+  if (rows.length) {
+    const lastCode = rows[0].AccountCode;
+    const hexPart = lastCode.slice(prefix.length);
+    const num = parseInt(hexPart, 16);
+    if (!isNaN(num)) {
+      nextSeq = num + 1;
+    }
+  }
+
+  const hexseq = nextSeq.toString(16).toUpperCase();
+  const padded = hexseq.padStart(5, "0");
+  return prefix + padded;
+};
 export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
@@ -22,11 +46,20 @@ export const findById = async (id) => {
   return rows[0] || null;
 };
 
+export const findByEmail = async (email) => {
+  const pool = await initializeDatabase();
+  const [rows] = await pool.execute(
+    `SELECT * FROM ${userTable} WHERE Email = ?`,
+    [email],
+  );
+  return rows[0] || null;
+};
+
 export const create = async (userParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${userTable} (Username, Email, PasswordHash, RoleId, IsActive, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${userTable} (AccountCode, Username, Email, PasswordHash, RoleId, IsActive, CreatedAt, UpdatedAt)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     userParams,
   );
   return result.insertId;

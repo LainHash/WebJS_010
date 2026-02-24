@@ -15,7 +15,6 @@ export const up = async (queryInterface) => {
     Username: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: true,
     },
     Email: {
       type: DataTypes.STRING(100),
@@ -29,6 +28,7 @@ export const up = async (queryInterface) => {
     RoleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 1, // assume at least one role exists (migration seeds it)
       references: {
         model: "Roles",
         key: "RoleId",
