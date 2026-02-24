@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import ProductGrid from "~/components/ProductGrid";
 
 function ProductsPage() {
