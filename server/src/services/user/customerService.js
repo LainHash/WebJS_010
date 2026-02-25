@@ -12,8 +12,6 @@ export const getById = async (id) => {
 };
 
 export const createCustomer = async (data) => {
-  // generate code for the new customer, then construct the model so that we
-  // can rely on toInsertParams for ordering and validation
   const code = await customerRepo.generateCustomerCode();
   const now = new Date();
   const customer = new Customer({

@@ -1,12 +1,12 @@
 import { initializeDatabase } from "../../config/db.js";
-import tableList from "./tableList.js";
+import tableList from "../tableList.js";
 
 // base queries returning only the columns defined on the Products table
 export const findAllBase = async () => {
   try {
     const pool = await initializeDatabase();
     const [rows] = await pool.execute(
-      `SELECT * FROM \`${tableList.productTable}\``,
+      `SELECT ProductId, ProductCode, ProductName, CategoryId, SupplierId, UnitPrice, UnitsInStock, CreatedAt, UpdatedAt FROM \`${tableList.productTable}\``,
     );
     return rows;
   } catch (error) {
@@ -18,7 +18,7 @@ export const findAllBase = async () => {
 export const findByIdBase = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT * FROM ${tableList.productTable} WHERE ProductId = ?`,
+    `SELECT ProductId, ProductCode, ProductName, CategoryId, SupplierId, UnitPrice, UnitsInStock, CreatedAt, UpdatedAt FROM ${tableList.productTable} WHERE ProductId = ?`,
     [id],
   );
   return rows[0] || null;
@@ -29,7 +29,7 @@ export const findAllWithNames = async () => {
   try {
     const pool = await initializeDatabase();
     const [rows] = await pool.execute(
-      `SELECT p.*, c.CategoryName AS CategoryName, s.CompanyName AS CompanyName
+      `SELECT p.ProductId, p.ProductCode, p.ProductName, p.CategoryId, p.SupplierId, p.UnitPrice, p.UnitsInStock, p.CreatedAt, p.UpdatedAt, c.CategoryName AS CategoryName, s.CompanyName AS CompanyName
        FROM \`${tableList.productTable}\` p
        LEFT JOIN ${tableList.categoryTable} c ON p.CategoryId = c.CategoryId 
        LEFT JOIN ${tableList.supplierTable} s ON p.SupplierId = s.SupplierId`,
@@ -44,7 +44,7 @@ export const findAllWithNames = async () => {
 export const findByIdWithNames = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT p.*, c.CategoryName AS CategoryName, s.CompanyName AS CompanyName
+    `SELECT p.ProductId, p.ProductCode, p.ProductName, p.CategoryId, p.SupplierId, p.UnitPrice, p.UnitsInStock, p.CreatedAt, p.UpdatedAt, c.CategoryName AS CategoryName, s.CompanyName AS CompanyName
        FROM ${tableList.productTable} p
        LEFT JOIN ${tableList.categoryTable} c ON p.CategoryId = c.CategoryId 
        LEFT JOIN ${tableList.supplierTable} s ON p.SupplierId = s.SupplierId 

@@ -5,7 +5,9 @@ const employeeTable = "Employees";
 export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
-    const [rows] = await pool.execute(`SELECT * FROM \`${employeeTable}\``);
+    const [rows] = await pool.execute(
+      `SELECT EmployeeId, EmployeeCode, AccountId, Lastname, Firstname, Gender, Birthday, Phone, CIC, Address, BusinessEmail, Department, Position, HiredDate, Salary, ManagerId, Status, CreatedAt, UpdatedAt FROM \`${employeeTable}\``,
+    );
     return rows;
   } catch (error) {
     console.error("SQL Error in findAll:", error.message || error);
@@ -16,7 +18,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT * FROM ${employeeTable} WHERE EmployeeId = ?`,
+    `SELECT EmployeeId, EmployeeCode, AccountId, Lastname, Firstname, Gender, Birthday, Phone, CIC, Address, BusinessEmail, Department, Position, HiredDate, Salary, ManagerId, Status, CreatedAt, UpdatedAt FROM ${employeeTable} WHERE EmployeeId = ?`,
     [id],
   );
   return rows[0] || null;

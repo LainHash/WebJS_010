@@ -27,7 +27,9 @@ export const generateCustomerCode = async () => {
 export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
-    const [rows] = await pool.execute(`SELECT * FROM \`${customerTable}\``);
+    const [rows] = await pool.execute(
+      `SELECT CustomerId, CustomerCode, AccountId, Lastname, Firstname, Gender, Birthday, City, Country, Address, Phone, CIC, CreatedAt, UpdatedAt FROM \`${customerTable}\``,
+    );
     return rows;
   } catch (error) {
     console.error("SQL Error in findAll:", error.message || error);
@@ -38,7 +40,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT * FROM ${customerTable} WHERE CustomerId = ?`,
+    `SELECT CustomerId, CustomerCode, AccountId, Lastname, Firstname, Gender, Birthday, City, Country, Address, Phone, CIC, CreatedAt, UpdatedAt FROM ${customerTable} WHERE CustomerId = ?`,
     [id],
   );
   return rows[0] || null;

@@ -21,7 +21,7 @@ export default class User {
     updatedAt = null,
   } = {}) {
     this.Id = id;
-    this.Code = code; // corresponds to AccountCode in the database
+    this.Code = code;
     this.Username = username;
     this.Email = email;
     this.PasswordHash = passwordHash;
@@ -47,10 +47,6 @@ export default class User {
   }
 
   toInsertParams() {
-    // We now also need to supply AccountCode as the very first parameter.
-    // The caller is responsible for generating a code (see authService).  The
-    // remainder of the fields match the column order defined in
-    // userRepo.create().
     return [
       this.Code,
       this.Username,

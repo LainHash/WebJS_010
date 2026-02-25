@@ -1,6 +1,5 @@
 import { verifyToken } from "../services/user/authService.js";
 
-// middleware that checks for bearer token and sets req.user
 export const requireAuth = (req, res, next) => {
   const authHeader =
     req.headers["authorization"] || req.headers["Authorization"];

@@ -5,7 +5,9 @@ const cpuTable = "CPUs";
 export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
-    const [rows] = await pool.execute(`SELECT * FROM \`${cpuTable}\``);
+    const [rows] = await pool.execute(
+      `SELECT CpuId, Cores, Logicals, Tdp, Socket, Speed, Turbo, CreatedAt, UpdatedAt FROM \`${cpuTable}\``,
+    );
     return rows;
   } catch (error) {
     console.error("SQL Error in findAll:", error.message || error);
@@ -16,7 +18,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT * FROM ${cpuTable} WHERE CpuId = ?`,
+    `SELECT CpuId, Cores, Logicals, Tdp, Socket, Speed, Turbo, CreatedAt, UpdatedAt FROM ${cpuTable} WHERE CpuId = ?`,
     [id],
   );
   return rows[0] || null;

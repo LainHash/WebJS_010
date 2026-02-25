@@ -13,31 +13,16 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";
 const JWT_EXPIRE = process.env.JWT_EXPIRE || "1h";
 const BCRYPT_SALT_ROUNDS = 10;
 
-// ---- public service functions ------------------------------------------------
-
-/**
- * Register a new account and corresponding customer information.
- *
- * `data` should include the usual user fields (username, email, password, etc.)
- * plus any customer-specific fields such as firstname/lastname, city, phone, etc.
- *
- * The function will hash the password, persist the user, then create a customer
- * record linked by the newly generated AccountId.
- *
- * Throws an error with `status` property on failure.
- */
 export const register = async (data) => {
   const {
     username,
     email,
     password,
-    roleId = 1, // default to the first role; database migration also sets
-    // a default value so missing column inserts still work
+    roleId = 1,
     isActive = true,
     ...customerFields
   } = data;
 
-  // verify the chosen role exists so we return a clean validation error
   const roleRow = await roleRepo.findById(roleId);
   if (!roleRow) {
     const err = new Error(`Role with id ${roleId} does not exist`);
@@ -45,7 +30,6 @@ export const register = async (data) => {
     throw err;
   }
 
-  // make sure the email isn't already taken
   const existing = await userRepo.findByEmail(email);
   if (existing) {
     const err = new Error("Email is already registered");
@@ -53,11 +37,9 @@ export const register = async (data) => {
     throw err;
   }
 
-  // hash the incoming password
   const passwordHash = await bcrypt.hash(password, BCRYPT_SALT_ROUNDS);
   const now = new Date();
 
-  // obtain unique code before constructing the user model
   const accountCode = await userRepo.generateAccountCode();
 
   const user = new User({
@@ -82,8 +64,6 @@ export const register = async (data) => {
   const userId = await userRepo.create(user.toInsertParams());
   user.Id = userId;
 
-  // create associated customer details, generating a code the same way we do
-  // for accounts.  Use the Customer model to help keep parameter order correct.
   const customerCode = await customerRepo.generateCustomerCode();
 
   const customer = new Customer({
@@ -107,10 +87,6 @@ export const register = async (data) => {
   return { user, customer };
 };
 
-/**
- * Authenticate a user using email/password.
- * Returns the user model plus a signed JWT if successful.
- */
 export const login = async (email, password) => {
   const row = await userRepo.findByEmail(email);
   if (!row) {
@@ -144,9 +120,6 @@ export const login = async (email, password) => {
   return { user, token };
 };
 
-/**
- * Verify a bearer token and return the decoded payload or `null` if invalid.
- */
 export const verifyToken = (token) => {
   try {
     return jwt.verify(token, JWT_SECRET);

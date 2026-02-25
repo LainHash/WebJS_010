@@ -15,7 +15,6 @@ export const getById = async (id) => {
 };
 
 export const createUser = async (data) => {
-  // hash password if provided
   if (data.password) {
     data.passwordHash = await bcrypt.hash(data.password, BCRYPT_SALT_ROUNDS);
   }
@@ -36,7 +35,6 @@ export const updateUser = async (id, data) => {
   const existing = await getById(id);
   if (!existing) return null;
 
-  // if password is being updated hash it
   if (data.password) {
     data.passwordHash = await bcrypt.hash(data.password, BCRYPT_SALT_ROUNDS);
   }

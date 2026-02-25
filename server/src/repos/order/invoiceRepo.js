@@ -5,7 +5,9 @@ const invoices = "Invoices";
 export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
-    const [rows] = await pool.execute(`SELECT * FROM ${invoices}`);
+    const [rows] = await pool.execute(
+      `SELECT InvoiceId, CustomerId, EmployeeId, OrderDate, RequiredDate, ShippedDate, Status, PaymentStatus, ShipmentStatus, Subtotal, DiscountAmount, TaxAmount, ShippingFee, TotalAmount, ShippingName, ShippingPhone, ShippingAddress, ShippingCity, ShippingCountry, Note, CreatedAt, UpdatedAt FROM ${invoices}`,
+    );
     return rows;
   } catch (error) {
     console.error("SQL Error in findAll:", error.message || error);
@@ -16,7 +18,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT * FROM ${invoices} WHERE InvoiceId = ?`,
+    `SELECT InvoiceId, CustomerId, EmployeeId, OrderDate, RequiredDate, ShippedDate, Status, PaymentStatus, ShipmentStatus, Subtotal, DiscountAmount, TaxAmount, ShippingFee, TotalAmount, ShippingName, ShippingPhone, ShippingAddress, ShippingCity, ShippingCountry, Note, CreatedAt, UpdatedAt FROM ${invoices} WHERE InvoiceId = ?`,
     [id],
   );
   return rows[0] || null;

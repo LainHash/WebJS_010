@@ -5,7 +5,9 @@ const gpuTable = "GPUs";
 export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
-    const [rows] = await pool.execute(`SELECT * FROM \`${gpuTable}\``);
+    const [rows] = await pool.execute(
+      `SELECT GpuId, MemorySize, MemoryType, Clock, UnifiedShader, Tmu, Rop, Bus, Chip, CreatedAt, UpdatedAt FROM \`${gpuTable}\``,
+    );
     return rows;
   } catch (error) {
     console.error("SQL Error in findAll:", error.message || error);
@@ -16,7 +18,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT * FROM ${gpuTable} WHERE GpuId = ?`,
+    `SELECT GpuId, MemorySize, MemoryType, Clock, UnifiedShader, Tmu, Rop, Bus, Chip, CreatedAt, UpdatedAt FROM ${gpuTable} WHERE GpuId = ?`,
     [id],
   );
   return rows[0] || null;

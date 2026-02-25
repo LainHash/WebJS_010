@@ -1,0 +1,237 @@
+# File Tree: WebJS_010
+
+**Generated:** 2/25/2026, 12:06:20 PM
+**Root Path:** `d:\Document\fullstack\WebJS_010`
+
+```
+├── 📁 server
+│   ├── 📁 src
+│   │   ├── 📁 config
+│   │   │   └── 📄 db.js
+│   │   ├── 📁 controllers
+│   │   │   ├── 📁 order
+│   │   │   │   ├── 📄 invoiceController.js
+│   │   │   │   ├── 📄 invoiceDetailController.js
+│   │   │   │   ├── 📄 paymentController.js
+│   │   │   │   └── 📄 shipmentController.js
+│   │   │   ├── 📁 product
+│   │   │   │   ├── 📄 categoryController.js
+│   │   │   │   ├── 📄 cpuController.js
+│   │   │   │   ├── 📄 gpuController.js
+│   │   │   │   ├── 📄 laptopController.js
+│   │   │   │   ├── 📄 productController.js
+│   │   │   │   └── 📄 supplierController.js
+│   │   │   └── 📁 user
+│   │   │       ├── 📄 authController.js
+│   │   │       ├── 📄 customerController.js
+│   │   │       ├── 📄 employeeController.js
+│   │   │       ├── 📄 roleController.js
+│   │   │       └── 📄 userController.js
+│   │   ├── 📁 middlewares
+│   │   │   └── 📄 authMiddleware.js
+│   │   ├── 📁 migrations
+│   │   │   ├── 📄 20260211000001_create_role.js
+│   │   │   ├── 📄 20260211000002_create_user.js
+│   │   │   ├── 📄 20260211000003_create_supplier.js
+│   │   │   ├── 📄 20260211000004_create_category.js
+│   │   │   ├── 📄 20260211000005_create_cpu.js
+│   │   │   ├── 📄 20260211000006_create_gpu.js
+│   │   │   ├── 📄 20260211000007_create_customer.js
+│   │   │   ├── 📄 20260211000008_create_employee.js
+│   │   │   ├── 📄 20260211000009_create_laptop.js
+│   │   │   ├── 📄 20260211000010_create_invoice.js
+│   │   │   ├── 📄 20260211000011_create_invoice_detail.js
+│   │   │   ├── 📄 20260211000012_create_payment.js
+│   │   │   ├── 📄 20260211000013_create_shipment.js
+│   │   │   ├── 📄 20260211000014_create_product.js
+│   │   │   └── 📄 index.js
+│   │   ├── 📁 models
+│   │   │   ├── 📁 order
+│   │   │   │   ├── 📄 Invoice.js
+│   │   │   │   ├── 📄 InvoiceDetail.js
+│   │   │   │   ├── 📄 Payment.js
+│   │   │   │   └── 📄 Shipment.js
+│   │   │   ├── 📁 product
+│   │   │   │   ├── 📄 Category.js
+│   │   │   │   ├── 📄 Cpu.js
+│   │   │   │   ├── 📄 Gpu.js
+│   │   │   │   ├── 📄 Laptop.js
+│   │   │   │   ├── 📄 Product.js
+│   │   │   │   └── 📄 Supplier.js
+│   │   │   └── 📁 user
+│   │   │       ├── 📄 Customer.js
+│   │   │       ├── 📄 Employee.js
+│   │   │       ├── 📄 Role.js
+│   │   │       └── 📄 User.js
+│   │   ├── 📁 repos
+│   │   │   ├── 📁 order
+│   │   │   │   ├── 📄 invoiceDetailRepo.js
+│   │   │   │   ├── 📄 invoiceRepo.js
+│   │   │   │   ├── 📄 paymentRepo.js
+│   │   │   │   └── 📄 shipmentRepo.js
+│   │   │   ├── 📁 product
+│   │   │   │   ├── 📄 categoryRepo.js
+│   │   │   │   ├── 📄 cpuRepo.js
+│   │   │   │   ├── 📄 gpuRepo.js
+│   │   │   │   ├── 📄 laptopRepo.js
+│   │   │   │   ├── 📄 productRepo.js
+│   │   │   │   ├── 📄 supplierRepo.js
+│   │   │   │   └── 📄 tableList.js
+│   │   │   └── 📁 user
+│   │   │       ├── 📄 customerRepo.js
+│   │   │       ├── 📄 employeeRepo.js
+│   │   │       ├── 📄 roleRepo.js
+│   │   │       └── 📄 userRepo.js
+│   │   ├── 📁 routes
+│   │   │   ├── 📁 order
+│   │   │   │   ├── 📄 invoiceDetailRoute.js
+│   │   │   │   ├── 📄 invoiceRoute.js
+│   │   │   │   ├── 📄 paymentRoute.js
+│   │   │   │   └── 📄 shipmentRoute.js
+│   │   │   ├── 📁 product
+│   │   │   │   ├── 📄 categoryRoute.js
+│   │   │   │   ├── 📄 cpuRoute.js
+│   │   │   │   ├── 📄 gpuRoute.js
+│   │   │   │   ├── 📄 laptopRoute.js
+│   │   │   │   ├── 📄 productRoute.js
+│   │   │   │   └── 📄 supplierRoute.js
+│   │   │   ├── 📁 user
+│   │   │   │   ├── 📄 authRoute.js
+│   │   │   │   ├── 📄 customerRoute.js
+│   │   │   │   ├── 📄 employeeRoute.js
+│   │   │   │   ├── 📄 roleRoute.js
+│   │   │   │   └── 📄 userRoute.js
+│   │   │   └── 📄 index.js
+│   │   ├── 📁 seeders
+│   │   ├── 📁 services
+│   │   │   ├── 📁 order
+│   │   │   │   ├── 📄 invoiceDetailService.js
+│   │   │   │   ├── 📄 invoiceService.js
+│   │   │   │   ├── 📄 paymentService.js
+│   │   │   │   └── 📄 shipmentService.js
+│   │   │   ├── 📁 product
+│   │   │   │   ├── 📄 categoryService.js
+│   │   │   │   ├── 📄 cpuService.js
+│   │   │   │   ├── 📄 gpuService.js
+│   │   │   │   ├── 📄 laptopService.js
+│   │   │   │   ├── 📄 productService.js
+│   │   │   │   └── 📄 supplierService.js
+│   │   │   └── 📁 user
+│   │   │       ├── 📄 authService.js
+│   │   │       ├── 📄 customerService.js
+│   │   │       ├── 📄 employeeService.js
+│   │   │       ├── 📄 roleService.js
+│   │   │       └── 📄 userService.js
+│   │   ├── 📄 app.js
+│   │   ├── 📄 migrate.js
+│   │   └── 📄 server.js
+│   ├── ⚙️ .gitignore
+│   ├── 📝 MIGRATIONS.md
+│   ├── ⚙️ package-lock.json
+│   └── ⚙️ package.json
+└── 📁 web
+    ├── 📁 .react-router
+    │   └── 📁 types
+    │       ├── 📁 src
+    │       │   ├── 📁 +types
+    │       │   │   └── 📄 root.ts
+    │       │   └── 📁 pages
+    │       │       ├── 📁 +types
+    │       │       │   ├── 📄 Contact.ts
+    │       │       │   ├── 📄 Home.ts
+    │       │       │   ├── 📄 Login.ts
+    │       │       │   └── 📄 Register.ts
+    │       │       └── 📁 product
+    │       │           └── 📁 +types
+    │       │               ├── 📄 CpuDetail.ts
+    │       │               ├── 📄 GpuDetail.ts
+    │       │               ├── 📄 LaptopDetail.ts
+    │       │               └── 📄 Products.ts
+    │       ├── 📄 +future.ts
+    │       ├── 📄 +routes.ts
+    │       └── 📄 +server-build.d.ts
+    ├── 📁 public
+    │   └── 📄 favicon.ico
+    ├── 📁 src
+    │   ├── 📁 components
+    │   │   ├── 📄 ContactForm.tsx
+    │   │   ├── 📄 FeatureHighlights.tsx
+    │   │   ├── 📄 Footer.tsx
+    │   │   ├── 📄 Hero.tsx
+    │   │   ├── 📄 Navbar.tsx
+    │   │   ├── 📄 ProductCard.tsx
+    │   │   ├── 📄 ProductGrid.tsx
+    │   │   ├── 📄 ProtectedRoute.tsx
+    │   │   └── 📄 Testimonials.tsx
+    │   ├── 📁 contexts
+    │   │   └── 📄 AuthContext.tsx
+    │   ├── 📁 hooks
+    │   │   ├── 📄 useCpu.ts
+    │   │   ├── 📄 useGpu.ts
+    │   │   ├── 📄 useLaptop.ts
+    │   │   └── 📄 useProducts.ts
+    │   ├── 📁 pages
+    │   │   ├── 📁 product
+    │   │   │   ├── 📄 CpuDetail.tsx
+    │   │   │   ├── 📄 GpuDetail.tsx
+    │   │   │   ├── 📄 LaptopDetail.tsx
+    │   │   │   └── 📄 Products.tsx
+    │   │   ├── 📄 Contact.tsx
+    │   │   ├── 📄 Home.tsx
+    │   │   ├── 📄 Login.tsx
+    │   │   └── 📄 Register.tsx
+    │   ├── 📁 services
+    │   │   ├── 📄 authService.ts
+    │   │   ├── 📄 cpuService.ts
+    │   │   ├── 📄 gpuService.ts
+    │   │   ├── 📄 laptopService.ts
+    │   │   └── 📄 productService.ts
+    │   ├── 📁 styles
+    │   │   ├── 📁 components
+    │   │   │   ├── 🎨 badges.css
+    │   │   │   ├── 🎨 buttons.css
+    │   │   │   ├── 🎨 cards.css
+    │   │   │   ├── 🎨 footer.css
+    │   │   │   ├── 🎨 navbar.css
+    │   │   │   ├── 🎨 sidebar.css
+    │   │   │   ├── 🎨 states.css
+    │   │   │   └── 🎨 utilities.css
+    │   │   ├── 📁 pages
+    │   │   │   ├── 🎨 account-detail.css
+    │   │   │   ├── 🎨 auth.css
+    │   │   │   ├── 🎨 contact.css
+    │   │   │   ├── 🎨 hero.css
+    │   │   │   ├── 🎨 product-detail.css
+    │   │   │   ├── 🎨 products.css
+    │   │   │   └── 🎨 testimonials.css
+    │   │   ├── 🎨 global.css
+    │   │   ├── 🎨 index.css
+    │   │   └── 🎨 layout.css
+    │   ├── 📁 types
+    │   │   ├── 📁 product
+    │   │   ├── 📄 Category.ts
+    │   │   ├── 📄 Cpu.ts
+    │   │   ├── 📄 Gpu.ts
+    │   │   ├── 📄 Laptop.ts
+    │   │   ├── 📄 Product.ts
+    │   │   ├── 📄 Supplier.ts
+    │   │   └── 📄 index.d.ts
+    │   ├── 📁 ultis
+    │   │   ├── 📄 api.ts
+    │   │   └── 📄 currency.ts
+    │   ├── 📄 root.tsx
+    │   └── 📄 routes.ts
+    ├── ⚙️ .dockerignore
+    ├── ⚙️ .gitignore
+    ├── 🐳 Dockerfile
+    ├── 📝 README.md
+    ├── ⚙️ package-lock.json
+    ├── ⚙️ package.json
+    ├── 📄 react-router.config.ts
+    ├── 📄 tailwind.config.cjs
+    ├── ⚙️ tsconfig.json
+    └── 📄 vite.config.ts
+```
+
+---
+*Generated by FileTree Pro Extension*
