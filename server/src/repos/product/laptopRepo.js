@@ -6,7 +6,19 @@ export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
     const [rows] = await pool.execute(
-      `SELECT LaptopId, LaptopType, Inches, ScreenResolution, CpuId, GpuId, Memory, OpSys, Weight, CreatedAt, UpdatedAt FROM \`${laptopTable}\``,
+      `SELECT
+        LaptopId, 
+        LaptopType, 
+        Inches, 
+        ScreenResolution, 
+        CpuId, 
+        GpuId, 
+        Memory,
+        OpSys, 
+        Weight, 
+        CreatedAt, 
+        UpdatedAt 
+      FROM \`${laptopTable}\``,
     );
     return rows;
   } catch (error) {
@@ -18,7 +30,19 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT LaptopId, LaptopType, Inches, ScreenResolution, CpuId, GpuId, Memory, OpSys, Weight, CreatedAt, UpdatedAt FROM ${laptopTable} WHERE LaptopId = ?`,
+    `SELECT 
+      LaptopId, 
+      LaptopType, 
+      Inches, 
+      ScreenResolution, 
+      CpuId,
+      GpuId, 
+      Memory, 
+      OpSys, 
+      Weight, 
+      CreatedAt, 
+      UpdatedAt 
+    FROM ${laptopTable} WHERE LaptopId = ?`,
     [id],
   );
   return rows[0] || null;

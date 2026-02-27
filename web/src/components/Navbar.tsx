@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 const navLinks = [
   { to: "/", label: "Trang chủ" },
   { to: "/products", label: "Sản phẩm" },
-  // { to: "/contact", label: "Liên hệ" },
+  { to: "/contact", label: "Liên hệ" },
 ];
 
 function Navbar() {

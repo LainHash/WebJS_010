@@ -30,7 +30,18 @@ export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
     const [rows] = await pool.execute(
-      `SELECT AccountId, AccountCode, Username, Email, PasswordHash, RoleId, IsActive, CreatedAt, UpdatedAt FROM \`${userTable}\``,
+      `SELECT 
+        AccountId,
+        AccountCode,
+        Username,
+        Email,
+        PasswordHash,
+        Balance,
+        RoleId,
+        IsActive,
+        CreatedAt,
+        UpdatedAt
+      FROM \`${userTable}\``,
     );
     return rows;
   } catch (error) {
@@ -42,7 +53,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT AccountId, AccountCode, Username, Email, PasswordHash, RoleId, IsActive, CreatedAt, UpdatedAt FROM ${userTable} WHERE AccountId = ?`,
+    `SELECT AccountId, AccountCode, Username, Email, PasswordHash, Balance, RoleId, IsActive, CreatedAt, UpdatedAt FROM ${userTable} WHERE AccountId = ?`,
     [id],
   );
   return rows[0] || null;
@@ -51,7 +62,7 @@ export const findById = async (id) => {
 export const findByEmail = async (email) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT AccountId, AccountCode, Username, Email, PasswordHash, RoleId, IsActive, CreatedAt, UpdatedAt FROM ${userTable} WHERE Email = ?`,
+    `SELECT AccountId, AccountCode, Username, Email, PasswordHash, Balance, RoleId, IsActive, CreatedAt, UpdatedAt FROM ${userTable} WHERE Email = ?`,
     [email],
   );
   return rows[0] || null;
@@ -60,8 +71,8 @@ export const findByEmail = async (email) => {
 export const create = async (userParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${userTable} (AccountCode, Username, Email, PasswordHash, RoleId, IsActive, CreatedAt, UpdatedAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${userTable} (AccountCode, Username, Email, PasswordHash, Balance, RoleId, IsActive, CreatedAt, UpdatedAt)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     userParams,
   );
   return result.insertId;
@@ -71,7 +82,7 @@ export const updateById = async (id, userParams) => {
   const pool = await initializeDatabase();
   const params = [...userParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${userTable} SET Username = ?, Email = ?, PasswordHash = ?, RoleId = ?, IsActive = ?, CreatedAt = ?, UpdatedAt = ? WHERE AccountId = ?`,
+    `UPDATE ${userTable} SET Username = ?, Email = ?, PasswordHash = ?, Balance = ?, RoleId = ?, IsActive = ?, CreatedAt = ?, UpdatedAt = ? WHERE AccountId = ?`,
     params,
   );
   return result.affectedRows;

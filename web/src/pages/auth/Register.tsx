@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuth } from "../contexts/AuthContext";
-import type { RegisterData } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
+import type { RegisterData } from "../../contexts/AuthContext";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();

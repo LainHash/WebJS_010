@@ -25,6 +25,11 @@ export const up = async (queryInterface) => {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    Balance: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+      defaultValue: 0,
+    },
     RoleId: {
       type: DataTypes.INTEGER,
       allowNull: false,

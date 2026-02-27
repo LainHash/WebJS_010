@@ -1,6 +1,6 @@
 # File Tree: WebJS_010
 
-**Generated:** 2/25/2026, 12:06:20 PM
+**Generated:** 2/25/2026, 4:16:02 PM
 **Root Path:** `d:\Document\fullstack\WebJS_010`
 
 ```
@@ -75,13 +75,13 @@
 │   │   │   │   ├── 📄 gpuRepo.js
 │   │   │   │   ├── 📄 laptopRepo.js
 │   │   │   │   ├── 📄 productRepo.js
-│   │   │   │   ├── 📄 supplierRepo.js
-│   │   │   │   └── 📄 tableList.js
-│   │   │   └── 📁 user
-│   │   │       ├── 📄 customerRepo.js
-│   │   │       ├── 📄 employeeRepo.js
-│   │   │       ├── 📄 roleRepo.js
-│   │   │       └── 📄 userRepo.js
+│   │   │   │   └── 📄 supplierRepo.js
+│   │   │   ├── 📁 user
+│   │   │   │   ├── 📄 customerRepo.js
+│   │   │   │   ├── 📄 employeeRepo.js
+│   │   │   │   ├── 📄 roleRepo.js
+│   │   │   │   └── 📄 userRepo.js
+│   │   │   └── 📄 tableList.js
 │   │   ├── 📁 routes
 │   │   │   ├── 📁 order
 │   │   │   │   ├── 📄 invoiceDetailRoute.js
@@ -129,108 +129,111 @@
 │   ├── 📝 MIGRATIONS.md
 │   ├── ⚙️ package-lock.json
 │   └── ⚙️ package.json
-└── 📁 web
-    ├── 📁 .react-router
-    │   └── 📁 types
-    │       ├── 📁 src
-    │       │   ├── 📁 +types
-    │       │   │   └── 📄 root.ts
-    │       │   └── 📁 pages
-    │       │       ├── 📁 +types
-    │       │       │   ├── 📄 Contact.ts
-    │       │       │   ├── 📄 Home.ts
-    │       │       │   ├── 📄 Login.ts
-    │       │       │   └── 📄 Register.ts
-    │       │       └── 📁 product
-    │       │           └── 📁 +types
-    │       │               ├── 📄 CpuDetail.ts
-    │       │               ├── 📄 GpuDetail.ts
-    │       │               ├── 📄 LaptopDetail.ts
-    │       │               └── 📄 Products.ts
-    │       ├── 📄 +future.ts
-    │       ├── 📄 +routes.ts
-    │       └── 📄 +server-build.d.ts
-    ├── 📁 public
-    │   └── 📄 favicon.ico
-    ├── 📁 src
-    │   ├── 📁 components
-    │   │   ├── 📄 ContactForm.tsx
-    │   │   ├── 📄 FeatureHighlights.tsx
-    │   │   ├── 📄 Footer.tsx
-    │   │   ├── 📄 Hero.tsx
-    │   │   ├── 📄 Navbar.tsx
-    │   │   ├── 📄 ProductCard.tsx
-    │   │   ├── 📄 ProductGrid.tsx
-    │   │   ├── 📄 ProtectedRoute.tsx
-    │   │   └── 📄 Testimonials.tsx
-    │   ├── 📁 contexts
-    │   │   └── 📄 AuthContext.tsx
-    │   ├── 📁 hooks
-    │   │   ├── 📄 useCpu.ts
-    │   │   ├── 📄 useGpu.ts
-    │   │   ├── 📄 useLaptop.ts
-    │   │   └── 📄 useProducts.ts
-    │   ├── 📁 pages
-    │   │   ├── 📁 product
-    │   │   │   ├── 📄 CpuDetail.tsx
-    │   │   │   ├── 📄 GpuDetail.tsx
-    │   │   │   ├── 📄 LaptopDetail.tsx
-    │   │   │   └── 📄 Products.tsx
-    │   │   ├── 📄 Contact.tsx
-    │   │   ├── 📄 Home.tsx
-    │   │   ├── 📄 Login.tsx
-    │   │   └── 📄 Register.tsx
-    │   ├── 📁 services
-    │   │   ├── 📄 authService.ts
-    │   │   ├── 📄 cpuService.ts
-    │   │   ├── 📄 gpuService.ts
-    │   │   ├── 📄 laptopService.ts
-    │   │   └── 📄 productService.ts
-    │   ├── 📁 styles
-    │   │   ├── 📁 components
-    │   │   │   ├── 🎨 badges.css
-    │   │   │   ├── 🎨 buttons.css
-    │   │   │   ├── 🎨 cards.css
-    │   │   │   ├── 🎨 footer.css
-    │   │   │   ├── 🎨 navbar.css
-    │   │   │   ├── 🎨 sidebar.css
-    │   │   │   ├── 🎨 states.css
-    │   │   │   └── 🎨 utilities.css
-    │   │   ├── 📁 pages
-    │   │   │   ├── 🎨 account-detail.css
-    │   │   │   ├── 🎨 auth.css
-    │   │   │   ├── 🎨 contact.css
-    │   │   │   ├── 🎨 hero.css
-    │   │   │   ├── 🎨 product-detail.css
-    │   │   │   ├── 🎨 products.css
-    │   │   │   └── 🎨 testimonials.css
-    │   │   ├── 🎨 global.css
-    │   │   ├── 🎨 index.css
-    │   │   └── 🎨 layout.css
-    │   ├── 📁 types
-    │   │   ├── 📁 product
-    │   │   ├── 📄 Category.ts
-    │   │   ├── 📄 Cpu.ts
-    │   │   ├── 📄 Gpu.ts
-    │   │   ├── 📄 Laptop.ts
-    │   │   ├── 📄 Product.ts
-    │   │   ├── 📄 Supplier.ts
-    │   │   └── 📄 index.d.ts
-    │   ├── 📁 ultis
-    │   │   ├── 📄 api.ts
-    │   │   └── 📄 currency.ts
-    │   ├── 📄 root.tsx
-    │   └── 📄 routes.ts
-    ├── ⚙️ .dockerignore
-    ├── ⚙️ .gitignore
-    ├── 🐳 Dockerfile
-    ├── 📝 README.md
-    ├── ⚙️ package-lock.json
-    ├── ⚙️ package.json
-    ├── 📄 react-router.config.ts
-    ├── 📄 tailwind.config.cjs
-    ├── ⚙️ tsconfig.json
-    └── 📄 vite.config.ts
+├── 📁 web
+│   ├── 📁 .react-router
+│   │   └── 📁 types
+│   │       ├── 📁 src
+│   │       │   ├── 📁 +types
+│   │       │   │   └── 📄 root.ts
+│   │       │   └── 📁 pages
+│   │       │       ├── 📁 +types
+│   │       │       │   ├── 📄 Contact.ts
+│   │       │       │   ├── 📄 Home.ts
+│   │       │       │   ├── 📄 Login.ts
+│   │       │       │   └── 📄 Register.ts
+│   │       │       └── 📁 product
+│   │       │           └── 📁 +types
+│   │       │               ├── 📄 CpuDetail.ts
+│   │       │               ├── 📄 GpuDetail.ts
+│   │       │               ├── 📄 LaptopDetail.ts
+│   │       │               └── 📄 Products.ts
+│   │       ├── 📄 +future.ts
+│   │       ├── 📄 +routes.ts
+│   │       └── 📄 +server-build.d.ts
+│   ├── 📁 public
+│   │   └── 📄 favicon.ico
+│   ├── 📁 src
+│   │   ├── 📁 components
+│   │   │   ├── 📄 ContactForm.tsx
+│   │   │   ├── 📄 FeatureHighlights.tsx
+│   │   │   ├── 📄 Footer.tsx
+│   │   │   ├── 📄 Hero.tsx
+│   │   │   ├── 📄 Navbar.tsx
+│   │   │   ├── 📄 ProductCard.tsx
+│   │   │   ├── 📄 ProductGrid.tsx
+│   │   │   ├── 📄 ProtectedRoute.tsx
+│   │   │   └── 📄 Testimonials.tsx
+│   │   ├── 📁 contexts
+│   │   │   └── 📄 AuthContext.tsx
+│   │   ├── 📁 hooks
+│   │   │   ├── 📄 useCpu.ts
+│   │   │   ├── 📄 useGpu.ts
+│   │   │   ├── 📄 useLaptop.ts
+│   │   │   └── 📄 useProducts.ts
+│   │   ├── 📁 pages
+│   │   │   ├── 📁 auth
+│   │   │   │   ├── 📄 Login.tsx
+│   │   │   │   └── 📄 Register.tsx
+│   │   │   ├── 📁 product
+│   │   │   │   ├── 📄 CpuDetail.tsx
+│   │   │   │   ├── 📄 GpuDetail.tsx
+│   │   │   │   ├── 📄 LaptopDetail.tsx
+│   │   │   │   └── 📄 Products.tsx
+│   │   │   ├── 📄 Contact.tsx
+│   │   │   └── 📄 Home.tsx
+│   │   ├── 📁 services
+│   │   │   ├── 📄 authService.ts
+│   │   │   ├── 📄 cpuService.ts
+│   │   │   ├── 📄 gpuService.ts
+│   │   │   ├── 📄 laptopService.ts
+│   │   │   └── 📄 productService.ts
+│   │   ├── 📁 styles
+│   │   │   ├── 📁 components
+│   │   │   │   ├── 🎨 badges.css
+│   │   │   │   ├── 🎨 buttons.css
+│   │   │   │   ├── 🎨 cards.css
+│   │   │   │   ├── 🎨 footer.css
+│   │   │   │   ├── 🎨 navbar.css
+│   │   │   │   ├── 🎨 sidebar.css
+│   │   │   │   ├── 🎨 states.css
+│   │   │   │   └── 🎨 utilities.css
+│   │   │   ├── 📁 pages
+│   │   │   │   ├── 🎨 account-detail.css
+│   │   │   │   ├── 🎨 auth.css
+│   │   │   │   ├── 🎨 contact.css
+│   │   │   │   ├── 🎨 hero.css
+│   │   │   │   ├── 🎨 product-detail.css
+│   │   │   │   ├── 🎨 products.css
+│   │   │   │   └── 🎨 testimonials.css
+│   │   │   ├── 🎨 global.css
+│   │   │   ├── 🎨 index.css
+│   │   │   └── 🎨 layout.css
+│   │   ├── 📁 types
+│   │   │   ├── 📁 product
+│   │   │   ├── 📄 Category.ts
+│   │   │   ├── 📄 Cpu.ts
+│   │   │   ├── 📄 Gpu.ts
+│   │   │   ├── 📄 Laptop.ts
+│   │   │   ├── 📄 Product.ts
+│   │   │   ├── 📄 Supplier.ts
+│   │   │   └── 📄 index.d.ts
+│   │   ├── 📁 ultis
+│   │   │   ├── 📄 api.ts
+│   │   │   └── 📄 currency.ts
+│   │   ├── 📄 root.tsx
+│   │   └── 📄 routes.ts
+│   ├── ⚙️ .dockerignore
+│   ├── ⚙️ .gitignore
+│   ├── 🐳 Dockerfile
+│   ├── 📝 README.md
+│   ├── ⚙️ package-lock.json
+│   ├── ⚙️ package.json
+│   ├── 📄 react-router.config.ts
+│   ├── 📄 tailwind.config.cjs
+│   ├── ⚙️ tsconfig.json
+│   └── 📄 vite.config.ts
+├── ⚙️ .gitignore
+└── 📄 src.tree
 ```
 
 ---

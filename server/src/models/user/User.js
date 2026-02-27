@@ -4,6 +4,7 @@ export default class User {
   Username;
   Email;
   PasswordHash;
+  Balance = 0;
   RoleId = 1;
   IsActive = true;
   CreatedAt = null;
@@ -15,6 +16,7 @@ export default class User {
     username,
     email,
     passwordHash,
+    balance,
     roleId = 1,
     isActive = true,
     createdAt = null,
@@ -25,6 +27,7 @@ export default class User {
     this.Username = username;
     this.Email = email;
     this.PasswordHash = passwordHash;
+    this.Balance = balance ?? 0;
     this.RoleId = roleId;
     this.IsActive = isActive;
     this.CreatedAt = createdAt;
@@ -39,6 +42,7 @@ export default class User {
       username: row.Username,
       email: row.Email,
       passwordHash: row.PasswordHash,
+      balance: row.Balance,
       roleId: row.RoleId,
       isActive: row.IsActive,
       createdAt: row.CreatedAt,
@@ -52,6 +56,7 @@ export default class User {
       this.Username,
       this.Email,
       this.PasswordHash,
+      this.Balance,
       this.RoleId,
       this.IsActive,
       this.CreatedAt,
@@ -64,6 +69,7 @@ export default class User {
       this.Username,
       this.Email,
       this.PasswordHash,
+      this.Balance,
       this.RoleId,
       this.IsActive,
       this.CreatedAt,
@@ -84,6 +90,17 @@ export default class User {
     }
     if (!this.PasswordHash) {
       errors.push({ field: "Password", message: "Password is required" });
+    }
+    // Balance should be numeric and non-negative
+    if (
+      this.Balance == null ||
+      isNaN(this.Balance) ||
+      Number(this.Balance) < 0
+    ) {
+      errors.push({
+        field: "Balance",
+        message: "Balance must be a non-negative number",
+      });
     }
     return errors;
   }
