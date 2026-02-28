@@ -6,7 +6,7 @@ export const findAll = async () => {
   try {
     const pool = await initializeDatabase();
     const [rows] = await pool.execute(
-      `SELECT SupplierId, CompanyName, ContactName, Country, Phone, Fax FROM \`${suppliers}\``,
+      `SELECT SupplierId, CompanyName, ContactName, Country, Phone FROM \`${suppliers}\``,
     );
     return rows;
   } catch (error) {
@@ -18,7 +18,7 @@ export const findAll = async () => {
 export const findById = async (id) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT SupplierId, CompanyName, ContactName, Country, Phone, Fax FROM ${suppliers} WHERE SupplierId = ?`,
+    `SELECT SupplierId, CompanyName, ContactName, Country, Phone FROM ${suppliers} WHERE SupplierId = ?`,
     [id],
   );
   return rows[0] || null;
@@ -28,7 +28,7 @@ export const findById = async (id) => {
 export const findByName = async (companyName) => {
   const pool = await initializeDatabase();
   const [rows] = await pool.execute(
-    `SELECT SupplierId, CompanyName, ContactName, Country, Phone, Fax FROM ${suppliers} WHERE CompanyName = ?`,
+    `SELECT SupplierId, CompanyName, ContactName, Country, Phone FROM ${suppliers} WHERE CompanyName = ?`,
     [companyName],
   );
   return rows[0] || null;
@@ -37,7 +37,7 @@ export const findByName = async (companyName) => {
 export const create = async (supplierParams) => {
   const pool = await initializeDatabase();
   const [result] = await pool.execute(
-    `INSERT INTO ${suppliers} (CompanyName, ContactName, Country, Phone, Fax)
+    `INSERT INTO ${suppliers} (CompanyName, ContactName, Country, Phone)
          VALUES (?, ?, ?, ?, ?)`,
     supplierParams,
   );
@@ -48,7 +48,7 @@ export const updateById = async (id, supplierParams) => {
   const pool = await initializeDatabase();
   const params = [...supplierParams, id];
   const [result] = await pool.execute(
-    `UPDATE ${suppliers} SET CompanyName = ?, ContactName = ?, Country = ?, Phone = ?, Fax = ? WHERE SupplierId = ?`,
+    `UPDATE ${suppliers} SET CompanyName = ?, ContactName = ?, Country = ?, Phone = ? = ? WHERE SupplierId = ?`,
     params,
   );
   return result.affectedRows;

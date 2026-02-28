@@ -48,11 +48,11 @@ export default function LaptopDetail() {
             </li>
             <li>
               <span>CPU</span>
-              <p>{laptop.CpuName}</p>
+              <Link to={`/products/cpu/${laptop.CpuId}`}>{laptop.CpuName}</Link>
             </li>
             <li>
               <span>GPU</span>
-              <p>{laptop.GpuName}</p>
+              <Link to={`/products/gpu/${laptop.GpuId}`}>{laptop.GpuName}</Link>
             </li>
             <li>
               <span>Screen Resolution</span>

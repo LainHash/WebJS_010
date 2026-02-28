@@ -27,6 +27,7 @@ interface AuthContextType {
   register: (data: RegisterData) => Promise<void>;
   isAuthenticated: boolean;
   isLoading: boolean;
+  updateUser: (updatedUser: any) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -67,6 +68,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     await registerApi(data);
   };
 
+  const updateUser = (updatedUser: any) => {
+    setUser(updatedUser);
+    localStorage.setItem("authUser", JSON.stringify(updatedUser));
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -75,6 +81,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         login,
         logout,
         register,
+        updateUser,
         isAuthenticated: !!token,
         isLoading,
       }}

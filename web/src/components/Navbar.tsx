@@ -39,6 +39,9 @@ function Navbar() {
             <span className="navbar__user">
               Xin chào, {user?.Username || user?.username || ""}
             </span>
+            <Link to="/account" className="btn btn--ghost">
+              Tài khoản
+            </Link>
             <button onClick={logout} className="btn btn--ghost">
               Đăng xuất
             </button>
